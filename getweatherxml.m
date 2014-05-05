@@ -31,7 +31,7 @@ for i=1:10
     %zugegriffen werden, die Tage sind von 1-5 nummeriert
 end
 
-%dateday als Zeilenvektor
-for kk=1:10
-   V(kk)=str2num(cell2mat(data{kk}));
-end
+[dateday,datemonth,tmax,tmin,chancerain,avewind,rainfall,snowfall,humidity]=cell2vec(data);
+
+
+

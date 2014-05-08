@@ -35,7 +35,7 @@ plot(tmax,'r')
     'callback', {@wetterplots,tmax,tmin,avewind,humidity,chancerain,snowfall,figure_nr,weekday,rainfall})
 
 %Textfeld für das gewählte Datum erstellen
-Datum_text=sprintf('%i.%i',dateday(ausgewaeltes_datum),datemonth(ausgewaeltes_datum));
+Datum_text=sprintf('%i. %s',dateday(ausgewaeltes_datum),monthname(ausgewaeltes_datum,(1:3)));
   
   
   Datum=uicontrol(figure_nr, 'style', 'text','string'...

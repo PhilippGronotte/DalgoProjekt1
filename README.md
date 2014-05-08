@@ -1,8 +1,15 @@
 Weather forecast GUI for Matlab
 ===============================
 Matlab GUI which illustrates the weather for 10 days including present day.									
-									
-
+Contents
+------------------------------
+- **Authors**
+- **Motivation**
+- **Installation**
+- **Project**
+ - ***Essentials***
+ - ***Usage***
+- **Copyright** 									
 Authors
 ------------------------------
 The present Matlab programm is a semester project of the following students:

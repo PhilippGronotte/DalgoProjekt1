@@ -1,79 +1,49 @@
-function [] = Tagesanzeige(handle, event,rainfall,tmin,tmax,Windgewschwindigkeit,Luftfeutigkeit,...
-    Regenwahrscheinlichkeit,Schneefallwahrscheinlichkeit,figure_nr,Tag,Monat,Regenwahrscheinlichkeit_Button,...
-    Windgeschwindigkeit_Button,Luftfeutigkeit_Button,rainfall_Button,Schneefallwahrscheinlichkeit_Button,Tmax,Tmin,Datum)
-% Author: TS (c) IHA @ Jade Hochschule applied licence see EOF 
-% Version History:
-% Ver. 0.01 initial create (TS) 06-May-2014  Initials (eg. TS)
+function [] = Tagesanzeige(handle, event, rainfall, tmin, tmax, Windgeschwindigkeit,...
+    Luftfeuchtigkeit, Regenwahrscheinlichkeit, Schneefallwahrscheinlichkeit,figure_nr,...
+    Tag, Monat, monthname, Regenwahrscheinlichkeit_Button, Windgeschwindigkeit_Button,...
+    Luftfeuchtigkeit_Button, rainfall_Button, Schneefallwahrscheinlichkeit_Button,...
+    Tmax, Tmin, Datum)
 
 %------------Your function implementation here--------------------------- 
 
-% auslessen des gewählten radiobuttens
-ausgewaeltes_datum = str2double(get(get(handle, 'SelectedObject'),'Tag'));
+% Auslessen des gewählten radiobuttens
+date = str2double(get(get(handle, 'SelectedObject'),'Tag'));
 
 
-% aktualisieren Texte die in die Textfelder eingetragen werden sollen
-Windgewschwindigkeit_text=sprintf('Die Windgeschwindigkeit am %i.%i beträgt %i kmh'...
-                          ,Tag(ausgewaeltes_datum),Monat(ausgewaeltes_datum),...
-                          Windgewschwindigkeit(ausgewaeltes_datum));
+% Aktualisieren der Texte die in die Textfelder eingetragen werden sollen
+Windgeschwindigkeit_text=sprintf('Die Windgeschwindigkeit am %i.%i beträgt %i kmh'...
+                          ,Tag(date),Monat(date),...
+                          Windgeschwindigkeit(date));
 
 Regenwahrscheinlichkeit_text=sprintf('Die Regenwahrscheinlichkeit am %i.%i beträgt %i %%'...
-                             ,Tag(ausgewaeltes_datum),Monat(ausgewaeltes_datum),...
-                             Regenwahrscheinlichkeit(ausgewaeltes_datum));
+                             ,Tag(date),Monat(date),...
+                             Regenwahrscheinlichkeit(date));
  
-Luftfeutigkeit_text=sprintf('Die Luftfeutigkeit am %i.%i beträgt %i %%'...
-                   ,Tag(ausgewaeltes_datum),Monat(ausgewaeltes_datum),...
-                   Luftfeutigkeit(ausgewaeltes_datum));
+Luftfeuchtigkeit_text=sprintf('Die Luftfeuchtigkeit am %i.%i beträgt %i %%'...
+                   ,Tag(date),Monat(date),...
+                   Luftfeuchtigkeit(date));
 
 rainfall_text=sprintf('Die Niederschlagsmenge am %i.%i beträgt %i mm'...
-                            ,Tag(ausgewaeltes_datum),Monat(ausgewaeltes_datum),...
-                            rainfall(ausgewaeltes_datum));
+                            ,Tag(date),Monat(date),...
+                            rainfall(date));
 
-Schneefallwahrscheinlichkeit_text=sprintf('Die Schneefallwahrscheinlichkeit am %i.%i beträgt %i%'...
-                                  ,Tag(ausgewaeltes_datum),Monat(ausgewaeltes_datum),...
-                                  Schneefallwahrscheinlichkeit(ausgewaeltes_datum));
+Schneefallwahrscheinlichkeit_text=sprintf('Die Neuschneemenge am %i.%i beträgt %i cm'...
+                                  ,Tag(date),Monat(date),...
+                                  Schneefallwahrscheinlichkeit(date));
 
-Tmax_text=sprintf(' Max: %i °C' ,tmax(ausgewaeltes_datum));
+Tmax_text=sprintf(' Max: %i °C' ,tmax(date));
 
-Tmin_text=sprintf(' Min: %i °C' ,tmin(ausgewaeltes_datum));
+Tmin_text=sprintf(' Min: %i °C' ,tmin(date));
  
-Datum_text=sprintf('%i.%i',Tag(ausgewaeltes_datum),Monat(ausgewaeltes_datum));
+Datum_text=sprintf('%i.%s',Tag(date),monthname(date,1:3));
 
-% aktualisieren des Textfelder
+% Aktualisieren des Textfelder mittels set
 set(Regenwahrscheinlichkeit_Button,'string',Regenwahrscheinlichkeit_text)
-set(Windgeschwindigkeit_Button,'string',Windgewschwindigkeit_text)
-set(Luftfeutigkeit_Button,'string',Luftfeutigkeit_text)
+set(Windgeschwindigkeit_Button,'string',Windgeschwindigkeit_text)
+set(Luftfeuchtigkeit_Button,'string',Luftfeuchtigkeit_text)
 set(rainfall_Button,'string',rainfall_text)
 set(Schneefallwahrscheinlichkeit_Button,'string',Schneefallwahrscheinlichkeit_text)
 set(Tmax,'string',Tmax_text)
 set(Tmin,'string',Tmin_text)
 set(Datum,'string',Datum_text)
 
-
-%Farbänderung der GUI in Abhängigkeit der Regenwahrscheinlichkeit
-% if Regenwahrscheinlichkeit(ausgewaeltes_datum)>50
-%     set(figure_nr,'Color',[0.1 0.25 0.29])
-% elseif Regenwahrscheinlichkeit(ausgewaeltes_datum)<50
-%     set(figure_nr,'Color',[0.4 0.6 0.9]) 
-% end    
-
-
-%--------------------Licence ---------------------------------------------
-% Copyright (c) <2014> TS
-% Institute for Hearing Technology and Audiology
-% Jade University of Applied Sciences 
-% Permission is hereby granted, free of charge, to any person obtaining 
-% a copy of this software and associated documentation files 
-% (the "Software"), to deal in the Software without restriction, including 
-% without limitation the rights to use, copy, modify, merge, publish, 
-% distribute, sublicense, and/or sell copies of the Software, and to
-% permit persons to whom the Software is furnished to do so, subject
-% to the following conditions:
-% The above copyright notice and this permission notice shall be included 
-% in all copies or substantial portions of the Software.
-% THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
-% EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES 
-% OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
-% IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY 
-% CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, 
-% TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE 
-% SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

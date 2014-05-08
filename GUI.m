@@ -1,36 +1,97 @@
-% Author: Tarik (c) IHA @ Jade Hochschule applied licence see EOF 
-% Version History:
-% Ver. 0.01 initial create (TS) 29-Apr-2014 			 Initials (eg. TS)
 %------------Your script starts here-------- 
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+close all;
+
+%Aufruf der Funktion getweatherxml(), die die Daten aus der xml-Datei
+%ausliest
+=======
+=======
+>>>>>>> a48e1dd3721a1800576e42ca86b389ebd040645d
 % aus dem internet rausgezogenen variablen
+>>>>>>> a48e1dd3721a1800576e42ca86b389ebd040645d
 
 [dateday,datemonth,tmax,tmin,chancerain,avewind,rainfall,snowfall,humidity,weekday,monthname] = getweatherxml();
 
-%in der Funktion erstellten Variablen
+%Erstellen einer Figure
 figure_nr=figure;
+%Festlegen der Hintergrundfarbe 
+set(figure_nr,'Color','w')
+%Festlegen des ersten Datums
 ausgewaeltes_datum=1;
-Durchschnitstemperatur=(tmax+tmin)./2;
+% Durchschnitstemperatur=(tmax+tmin)./2;
 
-%Erster plot der höchsten und Niedrigsten temperatur
+
+%Erster plot der höchsten und niedrigsten Temperatur
 subplot(2,1,1)
 hold on
-plot(tmin,'r')
+plot(tmin,'b')
 title('Höchste und Niedrigste Temperatur in den nächsten 10 Tagen')
 ylabel('Temperatur in °')
 set(gca,'XTick',[1 2 3 4 5 6 7 8 9 10])
-set(gca,'XTickLabel',{weekday(1),weekday(2),weekday(3),weekday(4),weekday(5),weekday(6),weekday(7),weekday(8),weekday(9),weekday(10),})
-plot(tmax)
+set(gca,'XTickLabel',{weekday(1,1:3),weekday(2,1:3),weekday(3,1:3),...
+    weekday(4,1:3),weekday(5,1:3),weekday(6,1:3),weekday(7,1:3),...
+    weekday(8,1:3),weekday(9,1:3),weekday(10,1:3),})
+plot(tmax,'r')
 
-%popupmenü für die plotmöglichkeiten
+%Popupmenü zur Auswahl der Grafik erstellen, die Funktion wetterplots3
+%beinhaltet die einzelnen Dartsellungen
  uicontrol(figure_nr,'style','popupmenu','string', {'Höchste und Niedrigste Temperatur' 'Niedrigste Temperatur'...
-    'Höchste Temperatur' 'Druchschnitstemperatur' 'Luftfeutigkeit' 'Regenwahrscheinlichkeit'...
+    'Höchste Temperatur' 'Niederschlagsmenge' 'Luftfeutigkeit' 'Regenwahrscheinlichkeit'...
     'Windgeschwindigkeit','Schneefallwahrscheinlichkeit'},'units', 'normalized', ...
     'Position', [0.12 -0.05 0.4 0.5],'tag','popupmenu',...
-    'callback', {@wetterplots,tmax,tmin,avewind,humidity,chancerain,snowfall,figure_nr,weekday})
+    'callback', {@wetterplots,tmax,tmin,avewind,humidity,chancerain,snowfall,figure_nr,weekday,rainfall})
+
+%Textfeld für das gewählte Datum erstellen
+Datum_text=sprintf('%i.%i',dateday(ausgewaeltes_datum),datemonth(ausgewaeltes_datum));
+  
+  
+  Datum=uicontrol(figure_nr, 'style', 'text','string'...
+      , Datum_text, 'units', 'normalized','Position'...
+      ,[0.65 0.38 0.2 0.08]);
+      %Schriftgröße festlegen
+      set(Datum,'FontSize',18)
+      
+  %Hintergrundfarbe festlegen
+    if chancerain(ausgewaeltes_datum)>50   %Daten anpassen, nur zum Testen, ebenso in wetter
+        set(Datum,'BackgroundColor',[0.1 0.25 0.29])
+    elseif chancerain(ausgewaeltes_datum)<50
+        set(Datum,'BackgroundColor',[0.4 0.6 0.9]) 
+    end
+
+      
+      %Farbe der Schrift festlegen
+      set(Datum,'ForegroundColor',[1 0.2 0.5])
+
+%Textfeld für die maximale Temperatur
+  Tmax_text=sprintf(' Max: %i °C' ,tmax(ausgewaeltes_datum));
+  
+  Tmax=uicontrol(figure_nr, 'style', 'text','string'...
+      , Tmax_text, 'units', 'normalized','Position'...
+      ,[0.65 0.24 0.2 0.1]); %[0.65 0.14 0.2 0.2])
+      %Schriftgröße festlegen
+      set(Tmax,'FontSize',16)
+      %Hintergrundfarbe festlegen
+      set(Tmax,'BackgroundColor','w')
+      %Farbe der Schrift festlegen
+      set(Tmax,'ForegroundColor','r')
+      
+%Textfeld für die minimale Temperatur
+  Tmin_text=sprintf(' Min: %i °C' ,tmin(ausgewaeltes_datum));
+  
+  Tmin=uicontrol(figure_nr, 'style', 'text','string'...
+      , Tmin_text, 'units', 'normalized','Position'...
+      ,[0.65 0.14 0.2 0.1]); %[0.65 0.14 0.2 0.2])
+      %Schriftgröße festlegen
+      set(Tmin,'FontSize',16)
+      %Hintergrundfarbe festlegen
+      set(Tmin,'BackgroundColor','w')
+      %Farbe der Schrift festlegen
+      set(Tmin,'ForegroundColor','b')
 
 %Textfeld für die Tägliche Windgewschwindigkeit
-avewind_text=sprintf('Die Windgeschwindigkeit am %i.%i beträgt %i kmh'...
+avewind_text=sprintf('Die Windgeschwindigkeit am %i.%i beträgt %i km/h'...
                          ,dateday(ausgewaeltes_datum),datemonth(ausgewaeltes_datum),avewind(ausgewaeltes_datum));
 
 avewind_Button=uicontrol(figure_nr, 'style', 'text','string', avewind_text,...
@@ -38,24 +99,24 @@ avewind_Button=uicontrol(figure_nr, 'style', 'text','string', avewind_text,...
 
 
 %Textfeld für die Tägliche Regenwahrscheinlichkeit
-chancerain_text=sprintf('Die Regenwahrscheinlichkeit am %i.%i beträgt %i %'...
+chancerain_text=sprintf('Die Regenwahrscheinlichkeit am %i.%i beträgt %i %%'...
                              ,dateday(ausgewaeltes_datum),datemonth(ausgewaeltes_datum),chancerain(ausgewaeltes_datum));
 
 chancerain_Button=uicontrol(figure_nr, 'style', 'text','string', chancerain_text,...
                                'units', 'normalized','Position', [0.12 0.31 0.5 0.03],'HorizontalAlignment','center');
 
 %Textfeld für die Tägliche Luftfeuschtigkeit
-humidity_text=sprintf('Die Luftfeutigkeit am %i.%i beträgt %i %'...
+humidity_text=sprintf('Die Luftfeutigkeit am %i.%i beträgt %i %%'...
                     ,dateday(ausgewaeltes_datum),datemonth(ausgewaeltes_datum),humidity(ausgewaeltes_datum));
 
 humidity_Button=uicontrol(figure_nr, 'style', 'text','string', humidity_text,...
                      'units', 'normalized','Position', [0.12 0.17 0.5 0.03],'HorizontalAlignment','center');
 
-%Textfeld für die Tägliche Durschnitstemperatur
-Durchschnitstemperatur_text=sprintf('Die Durchschnitstemperatur am %i.%i beträgt %i°'...
-                            ,dateday(ausgewaeltes_datum),datemonth(ausgewaeltes_datum),Durchschnitstemperatur(ausgewaeltes_datum));
+%Textfeld für die Tägliche Niederschlagsmenge
+rainfall_text=sprintf('Die Niederschlagsmenge am %i.%i beträgt %i mm'...
+                            ,dateday(ausgewaeltes_datum),datemonth(ausgewaeltes_datum),rainfall(ausgewaeltes_datum));
 
-Durchschnitstemperatur_Button=uicontrol(figure_nr, 'style', 'text','string', Durchschnitstemperatur_text,...
+rainfall_Button=uicontrol(figure_nr, 'style', 'text','string', rainfall_text,...
                               'units', 'normalized','Position', [0.12 0.1 0.5 0.03],'HorizontalAlignment','center');
 
 %Textfeld für die Tägliche Schneefallwahrscheinlichkeit
@@ -68,9 +129,9 @@ snowfall_Button=uicontrol(figure_nr, 'style', 'text','string', snowfall_text,...
 
 % radiobutten gruppe
 buttongroup=uibuttongroup('Position',[0.12 0.49 0.8 0.05],'SelectionChangeFcn',...
-            {@Tagesanzeige,Durchschnitstemperatur,avewind,humidity,chancerain,...
+            {@Tagesanzeige,rainfall,tmin,tmax,avewind,humidity,chancerain,...
             snowfall,figure_nr,dateday,datemonth,chancerain_Button,avewind_Button,...
-            humidity_Button,Durchschnitstemperatur_Button,snowfall_Button});
+            humidity_Button,rainfall_Button,snowfall_Button,Tmax,Tmin,Datum});
     
 %radiobuttens für die radiobuttengruppe
 uicontrol(figure_nr, 'style', 'radiobutton',...

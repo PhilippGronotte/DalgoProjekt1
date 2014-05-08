@@ -1,4 +1,4 @@
-function [dateday,datemonth,tmax,tmin,chancerain,avewind,rainfall,snowfall,humidity,weekday] = getweatherxml()
+function [dateday,datemonth,tmax,tmin,chancerain,avewind,rainfall,snowfall,humidity,weekday,monthname] = getweatherxml()
 
 
 path = urlwrite('http://api.wunderground.com/api/aad6eaa289129b55/forecast10day/q/Germany/Oldenburg.xml', 'weather.xml');
@@ -30,7 +30,8 @@ for i=1:10
     data{i,9}=weatherdata.children{1}.children{4}.children{2}.children{1}.children{i}.children{13}.children{2}.children;
     %Humidity
     data{i,10}=weatherdata.children{1}.children{4}.children{2}.children{1}.children{i}.children{18}.children;
-    
+    %monthname
+    data{i,11}=weatherdata.children{1}.children{4}.children{2}.children{1}.children{i}.children{1}.children{13}.children;
 end
 
 [dateday,datemonth,tmax,tmin,chancerain,avewind,rainfall,snowfall,humidity]=cell2vec(data);
@@ -39,3 +40,4 @@ end
 %speichern; mit weekday(x,1:9) kann auf die einzelnen Wochentage
 %zugegriffen werden, x ist dabei eine Zahl zwischen 1 und 10
 weekday=strvcat([data{21:30}]);
+monthname=strvcat([data{101:110}]);

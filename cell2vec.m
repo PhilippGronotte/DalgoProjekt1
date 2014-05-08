@@ -12,15 +12,15 @@ v7= zeros (1,10);
 v8= zeros (1,10);
 v9= zeros (1,10);
 for kk=1:10
-   v1(kk)=str2num(cell2mat(data{kk}));
-   v2(kk)=str2num(cell2mat(data{kk+10}));
-   v3(kk)=str2num(cell2mat(data{kk+30}));
-   v4(kk)=str2num(cell2mat(data{kk+40}));
-   v5(kk)=str2num(cell2mat(data{kk+50}));
-   v6(kk)=str2num(cell2mat(data{kk+60}));
-   v7(kk)=str2num(cell2mat(data{kk+70}));
-   v8(kk)=str2num(cell2mat(data{kk+80}));
-   v9(kk)=str2num(cell2mat(data{kk+90}));   
+   v1(kk)=str2double(cell2mat(data{kk}));
+   v2(kk)=str2double(cell2mat(data{kk+10}));
+   v3(kk)=str2double(cell2mat(data{kk+30}));
+   v4(kk)=str2double(cell2mat(data{kk+40}));
+   v5(kk)=str2double(cell2mat(data{kk+50}));
+   v6(kk)=str2double(cell2mat(data{kk+60}));
+   v7(kk)=str2double(cell2mat(data{kk+70}));
+   v8(kk)=str2double(cell2mat(data{kk+80}));
+   v9(kk)=str2double(cell2mat(data{kk+90}));   
 end 
 end
 

@@ -1,9 +1,19 @@
 Weather forecast GUI for Matlab
 ===============================
 Matlab GUI which illustrates the weather for 10 days including present day.									
-									
+Contents
+------------------------------
+- **Authors**
+- **Motivation**
+- **Installation**
+- **Project**
+ - ***Essentials***
+ - ***Usage***
+- **Copyright** 
 
-Authors
+
+									
+#Authors
 ------------------------------
 The present Matlab programm is a semester project of the following students:
 
@@ -17,7 +27,7 @@ Matrikelnummer: 6005858
 
 Tarik Siebe
 tarik.siebe@student.jade-hs.de
-Matrikelnummer: 600
+Matrikelnummer: 6004941
 
 Motivation
 -------------------------------
@@ -37,7 +47,7 @@ Installation
 
   [http://git-scm.com/](http://git-scm.com/)
 
-The programm is sucessfully tested with Matlab R2013a Student Version (8.1.0.604) under Windows 8.1 and Windows 7 Starter (Service Pack 1)
+The programm was sucessfully tested with Matlab R2013a Student Version (8.1.0.604) under Windows 8.1 and Windows 7 Starter (Service Pack 1)
 Project
 -------------------------------
 ### Essentials
@@ -58,9 +68,46 @@ in the chosen programm directory.
 
 The programm updates it's weather data from www.wunderground.com. A working internet conection is necessary for that reason.
 
-### Usage
+The program is completly in german language. Further information found in english language can be found in 'Usage'.
 
-Put stuff here !!!
+### Usage
+In the following the general usage of the GUI ist shortly described. In the first picture represents the user interface.
+
+![User Interface](http://i1295.photobucket.com/albums/b635/Phoenix_Granite/explanation_zps5128c171.jpg)
+
+The first  programpart ist quite selfexplaining. It shows the plot of the actual chosen weather data.
+
+![Plot of weather data](http://i1295.photobucket.com/albums/b635/Phoenix_Granite/explanation5_zpse173f0e7.jpg)
+
+The displayed data can be chosen in the dropdown menu below the plot.
+
+![Dropdown menu](http://i1295.photobucket.com/albums/b635/Phoenix_Granite/explanation2_zpsbbb714c3.jpg)
+
+The radiobutton menu allows you to choose a day whose weather data is said to be shown in detail.
+
+![Radiobutton group](http://i1295.photobucket.com/albums/b635/Phoenix_Granite/explanation3_zps54e574d6.jpg) 
+
+The detailed weather data for the chosen day can be found below the dropdown menu in several textboxes.
+
+![Textboxes](http://i1295.photobucket.com/albums/b635/Phoenix_Granite/explanation5_zpse173f0e7.jpg)
+
+On the right side is a short oversight placed. You can find the actual date as well as the maximum and the minimum temperature in it.
+
+At long last a short overview on the features:
+
+- 10 days weather forecast
+
+- Individual plottable weather data of:
+  - Min und max Temp. 
+  - Min Temp
+  - Max Temp
+  - Niederschlagsmenge in mm (rainfall)
+  - Luftfeuchtigkeit in % (humidity)
+  - Regenwahrscheinlichkeit in % (chance of rain)
+  - Windgeschwindigkeit in km/h (windspeed)
+  - Schneefallwahrscheinlichkeit in cm (chance of snow)
+
+- Each day with related data single displayable  
 
 Copyright
 ---------------------------------

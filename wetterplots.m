@@ -56,7 +56,7 @@ elseif value == 4
      hold off
      plot(rainfall)
      title('Niederschlagsmenge in mm in den nächsten 10 Tagen')
-     ylabel('Temperatur in °')     
+     ylabel('Temperatur in mm')     
     set(gca,'XTick',[1 2 3 4 5 6 7 8 9 10])
     set(gca,'XTickLabel',{weekday(1,1:3),weekday(2,1:3),weekday(3,1:3),...
         weekday(4,1:3),weekday(5,1:3),weekday(6,1:3),weekday(7,1:3),...
@@ -95,7 +95,7 @@ elseif value == 7
     hold off
     plot(Windgewschwindigkeit)
     title('Windgewschwindigkeit in den nächsten 10 Tagen')
-    ylabel('Windgewschwindigkeit in kmh')
+    ylabel('Windgewschwindigkeit in km/h')
     set(gca,'XTick',[1 2 3 4 5 6 7 8 9 10])
     set(gca,'XTickLabel',{weekday(1,1:3),weekday(2,1:3),weekday(3,1:3),...
         weekday(4,1:3),weekday(5,1:3),weekday(6,1:3),weekday(7,1:3),...

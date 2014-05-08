@@ -1,16 +1,8 @@
 function [] = wetterplots(handle, event,Hoehst_temp,Niedrigst_temp,Windgewschwindigkeit,Luftfeutigkeit,...
-    Regenwahrscheinlichkeit,Schneefallwahrscheinlichkeit,figure_nr,weekday)
+    Regenwahrscheinlichkeit,Schneefallwahrscheinlichkeit,figure_nr,weekday,rainfall)
 % function is for the GUI.m
 
-%------------------------------------------------------------------------ 
-
-% Author: T.Siebe (c) IHA @ Jade Hochschule applied licence see EOF 
-% Version History:
-% Ver. 0.01 initial create (TS) 29-Apr-2014  Initials (eg. TS)
-
 %------------Your function implementation here--------------------------- 
-
-Druchschnitstemperatur=(Hoehst_temp+Niedrigst_temp)./2;
 
  
 % liest denn aktuellen ausgewählte popup aus
@@ -21,14 +13,15 @@ if value == 1
     figure(figure_nr)
     subplot(2,1,1)
     hold off
-    plot(Niedrigst_temp,'r')
+    plot(Niedrigst_temp,'b')
     title('Höchste und Niedrigste Temperatur in den nächsten 10 Tagen')
     ylabel('Temperatur in °')
     hold on
-    plot(Hoehst_temp)    
+    plot(Hoehst_temp,'r')    
     set(gca,'XTick',[1 2 3 4 5 6 7 8 9 10])
-    set(gca,'XTickLabel',{weekday(1),weekday(2),weekday(3),weekday(4),weekday(5),...
-    weekday(6),weekday(7),weekday(8),weekday(9),weekday(10),})
+    set(gca,'XTickLabel',{weekday(1,1:3),weekday(2,1:3),weekday(3,1:3),...
+        weekday(4,1:3),weekday(5,1:3),weekday(6,1:3),weekday(7,1:3),...
+        weekday(8,1:3),weekday(9,1:3),weekday(10,1:3)})
 
  %plot der Niedriegsen Temperatur
 elseif value == 2
@@ -39,8 +32,9 @@ elseif value == 2
     title('Niedrigste Temperatur in den nächsten 10 Tagen')
     ylabel('Temperatur in °')    
     set(gca,'XTick',[1 2 3 4 5 6 7 8 9 10])
-    set(gca,'XTickLabel',{weekday(1),weekday(2),weekday(3),weekday(4),...
-    weekday(5),weekday(6),weekday(7),weekday(8),weekday(9),weekday(10),})
+    set(gca,'XTickLabel',{weekday(1,1:3),weekday(2,1:3),weekday(3,1:3),...
+        weekday(4,1:3),weekday(5,1:3),weekday(6,1:3),weekday(7,1:3),...
+        weekday(8,1:3),weekday(9,1:3),weekday(10,1:3)})
 
  %plot der Höchsten Temperatur
 elseif value == 3
@@ -51,44 +45,48 @@ elseif value == 3
     title('Höchste Temperatur in den nächsten 10 Tagen')
     ylabel('Temperatur in °') 
     set(gca,'XTick',[1 2 3 4 5 6 7 8 9 10])
-    set(gca,'XTickLabel',{weekday(1),weekday(2),weekday(3),weekday(4),...
-    weekday(5),weekday(6),weekday(7),weekday(8),weekday(9),weekday(10),})
+    set(gca,'XTickLabel',{weekday(1,1:3),weekday(2,1:3),weekday(3,1:3),...
+        weekday(4,1:3),weekday(5,1:3),weekday(6,1:3),weekday(7,1:3),...
+        weekday(8,1:3),weekday(9,1:3),weekday(10,1:3)})
 
- %plot der Druchschnitstemperatur
+ %plot der Niederschlagsmenge
 elseif value == 4
      figure(figure_nr)
      subplot(2,1,1)
      hold off
-     plot(Druchschnitstemperatur)
-     title('Druchschnitstemperatur in den nächsten 10 Tagen')
+     plot(rainfall)
+     title('Niederschlagsmenge in mm in den nächsten 10 Tagen')
      ylabel('Temperatur in °')     
     set(gca,'XTick',[1 2 3 4 5 6 7 8 9 10])
-    set(gca,'XTickLabel',{weekday(1),weekday(2),weekday(3),weekday(4),...
-    weekday(5),weekday(6),weekday(7),weekday(8),weekday(9),weekday(10),})
+    set(gca,'XTickLabel',{weekday(1,1:3),weekday(2,1:3),weekday(3,1:3),...
+        weekday(4,1:3),weekday(5,1:3),weekday(6,1:3),weekday(7,1:3),...
+        weekday(8,1:3),weekday(9,1:3),weekday(10,1:3)})
 
  %plot der Luftfeutigkeit
 elseif value == 5
     figure(figure_nr)
     subplot(2,1,1)
     hold off
-    plot(Luftfeutigkeit)
+    bar(Luftfeutigkeit)
     title('Luftfeutigkeit in den nächsten 10 Tagen')
     ylabel('Luftfeutigkeit in %')    
     set(gca,'XTick',[1 2 3 4 5 6 7 8 9 10])
-    set(gca,'XTickLabel',{weekday(1),weekday(2),weekday(3),weekday(4),weekday(5),...
-    weekday(6),weekday(7),weekday(8),weekday(9),weekday(10),})
+    set(gca,'XTickLabel',{weekday(1,1:3),weekday(2,1:3),weekday(3,1:3),...
+        weekday(4,1:3),weekday(5,1:3),weekday(6,1:3),weekday(7,1:3),...
+        weekday(8,1:3),weekday(9,1:3),weekday(10,1:3)})
 
  %plot der Regenwahrscheinlichkeit
 elseif value == 6
     figure(figure_nr)
     subplot(2,1,1)
     hold off
-    plot(Regenwahrscheinlichkeit)
+    bar(Regenwahrscheinlichkeit)
     title('Regenwahrscheinlichkeit in den nächsten 10 Tagen')
     ylabel('Regenwahrscheinlichkeit in %')    
     set(gca,'XTick',[1 2 3 4 5 6 7 8 9 10])
-    set(gca,'XTickLabel',{weekday(1),weekday(2),weekday(3),weekday(4),weekday(5),...
-    weekday(6),weekday(7),weekday(8),weekday(9),weekday(10),})
+    set(gca,'XTickLabel',{weekday(1,1:3),weekday(2,1:3),weekday(3,1:3),...
+        weekday(4,1:3),weekday(5,1:3),weekday(6,1:3),weekday(7,1:3),...
+        weekday(8,1:3),weekday(9,1:3),weekday(10,1:3)})
 
  %plot der Windgewschwindigkeit
 elseif value == 7
@@ -99,8 +97,9 @@ elseif value == 7
     title('Windgewschwindigkeit in den nächsten 10 Tagen')
     ylabel('Windgewschwindigkeit in kmh')
     set(gca,'XTick',[1 2 3 4 5 6 7 8 9 10])
-    set(gca,'XTickLabel',{weekday(1),weekday(2),weekday(3),weekday(4),weekday(5),...
-    weekday(6),weekday(7),weekday(8),weekday(9),weekday(10),})
+    set(gca,'XTickLabel',{weekday(1,1:3),weekday(2,1:3),weekday(3,1:3),...
+        weekday(4,1:3),weekday(5,1:3),weekday(6,1:3),weekday(7,1:3),...
+        weekday(8,1:3),weekday(9,1:3),weekday(10,1:3)})
 
 %plot der Schneefallwahrscheinlichkeit
 else
@@ -111,8 +110,9 @@ else
     title('Schneefallwahrscheinlichkeit in den nächsten 10 Tagen')
     ylabel('Schneefallwahrscheinlichkeit in %')    
     set(gca,'XTick',[1 2 3 4 5 6 7 8 9 10])
-    set(gca,'XTickLabel',{weekday(1),weekday(2),weekday(3),weekday(4),weekday(5),...
-    weekday(6),weekday(7),weekday(8),weekday(9),weekday(10),})
+    set(gca,'XTickLabel',{weekday(1,1:3),weekday(2,1:3),weekday(3,1:3),...
+        weekday(4,1:3),weekday(5,1:3),weekday(6,1:3),weekday(7,1:3),...
+        weekday(8,1:3),weekday(9,1:3),weekday(10,1:3)})
 end
 
 

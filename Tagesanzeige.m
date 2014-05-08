@@ -1,6 +1,6 @@
-function [] = Tagesanzeige(handle, event,Durchschnitstemperatur,Windgewschwindigkeit,Luftfeutigkeit,...
+function [] = Tagesanzeige(handle, event,rainfall,tmin,tmax,Windgewschwindigkeit,Luftfeutigkeit,...
     Regenwahrscheinlichkeit,Schneefallwahrscheinlichkeit,figure_nr,Tag,Monat,Regenwahrscheinlichkeit_Button,...
-    Windgeschwindigkeit_Button,Luftfeutigkeit_Button,Durchschnitstemperatur_Button,Schneefallwahrscheinlichkeit_Button)
+    Windgeschwindigkeit_Button,Luftfeutigkeit_Button,rainfall_Button,Schneefallwahrscheinlichkeit_Button,Tmax,Tmin,Datum)
 % Author: TS (c) IHA @ Jade Hochschule applied licence see EOF 
 % Version History:
 % Ver. 0.01 initial create (TS) 06-May-2014  Initials (eg. TS)
@@ -8,7 +8,7 @@ function [] = Tagesanzeige(handle, event,Durchschnitstemperatur,Windgewschwindig
 %------------Your function implementation here--------------------------- 
 
 % auslessen des gewählten radiobuttens
-ausgewaeltes_datum = str2num(get(get(handle, 'SelectedObject'),'Tag'));
+ausgewaeltes_datum = str2double(get(get(handle, 'SelectedObject'),'Tag'));
 
 
 % aktualisieren Texte die in die Textfelder eingetragen werden sollen
@@ -16,31 +16,45 @@ Windgewschwindigkeit_text=sprintf('Die Windgeschwindigkeit am %i.%i beträgt %i k
                           ,Tag(ausgewaeltes_datum),Monat(ausgewaeltes_datum),...
                           Windgewschwindigkeit(ausgewaeltes_datum));
 
-Regenwahrscheinlichkeit_text=sprintf('Die Regenwahrscheinlichkeit am %i.%i beträgt %i %'...
+Regenwahrscheinlichkeit_text=sprintf('Die Regenwahrscheinlichkeit am %i.%i beträgt %i %%'...
                              ,Tag(ausgewaeltes_datum),Monat(ausgewaeltes_datum),...
                              Regenwahrscheinlichkeit(ausgewaeltes_datum));
  
-Luftfeutigkeit_text=sprintf('Die Luftfeutigkeit am %i.%i beträgt %i %'...
+Luftfeutigkeit_text=sprintf('Die Luftfeutigkeit am %i.%i beträgt %i %%'...
                    ,Tag(ausgewaeltes_datum),Monat(ausgewaeltes_datum),...
                    Luftfeutigkeit(ausgewaeltes_datum));
 
-Durchschnitstemperatur_text=sprintf('Die Durchschnitstemperatur am %i.%i beträgt %i°'...
+rainfall_text=sprintf('Die Niederschlagsmenge am %i.%i beträgt %i mm'...
                             ,Tag(ausgewaeltes_datum),Monat(ausgewaeltes_datum),...
-                            Durchschnitstemperatur(ausgewaeltes_datum));
+                            rainfall(ausgewaeltes_datum));
 
 Schneefallwahrscheinlichkeit_text=sprintf('Die Schneefallwahrscheinlichkeit am %i.%i beträgt %i%'...
                                   ,Tag(ausgewaeltes_datum),Monat(ausgewaeltes_datum),...
                                   Schneefallwahrscheinlichkeit(ausgewaeltes_datum));
 
-                              
+Tmax_text=sprintf(' Max: %i °C' ,tmax(ausgewaeltes_datum));
+
+Tmin_text=sprintf(' Min: %i °C' ,tmin(ausgewaeltes_datum));
+ 
+Datum_text=sprintf('%i.%i',Tag(ausgewaeltes_datum),Monat(ausgewaeltes_datum));
+
 % aktualisieren des Textfelder
 set(Regenwahrscheinlichkeit_Button,'string',Regenwahrscheinlichkeit_text)
 set(Windgeschwindigkeit_Button,'string',Windgewschwindigkeit_text)
 set(Luftfeutigkeit_Button,'string',Luftfeutigkeit_text)
-set(Durchschnitstemperatur_Button,'string',Durchschnitstemperatur_text)
+set(rainfall_Button,'string',rainfall_text)
 set(Schneefallwahrscheinlichkeit_Button,'string',Schneefallwahrscheinlichkeit_text)
+set(Tmax,'string',Tmax_text)
+set(Tmin,'string',Tmin_text)
+set(Datum,'string',Datum_text)
 
-    
+
+%Farbänderung der GUI in Abhängigkeit der Regenwahrscheinlichkeit
+% if Regenwahrscheinlichkeit(ausgewaeltes_datum)>50
+%     set(figure_nr,'Color',[0.1 0.25 0.29])
+% elseif Regenwahrscheinlichkeit(ausgewaeltes_datum)<50
+%     set(figure_nr,'Color',[0.4 0.6 0.9]) 
+% end    
 
 
 %--------------------Licence ---------------------------------------------

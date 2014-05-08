@@ -3,14 +3,9 @@
 % Ver. 0.01 initial create (TS) 29-Apr-2014 			 Initials (eg. TS)
 %------------Your script starts here-------- 
 
-clear;
-close all;
-clc;
-
-
 % aus dem internet rausgezogenen variablen
 
-[dateday,datemonth,tmax,tmin,chancerain,avewind,rainfall,snowfall,humidity,weekday] = getweatherxml();
+[dateday,datemonth,tmax,tmin,chancerain,avewind,rainfall,snowfall,humidity,weekday,monthname] = getweatherxml();
 
 %in der Funktion erstellten Variablen
 figure_nr=figure;

@@ -9,8 +9,11 @@ Contents
 - **Project**
  - ***Essentials***
  - ***Usage***
-- **Copyright** 									
-Authors
+- **Copyright** 
+
+
+									
+#Authors
 ------------------------------
 The present Matlab programm is a semester project of the following students:
 
@@ -44,7 +47,7 @@ Installation
 
   [http://git-scm.com/](http://git-scm.com/)
 
-The programm is sucessfully tested with Matlab R2013a Student Version (8.1.0.604) under Windows 8.1 and Windows 7 Starter (Service Pack 1)
+The programm was sucessfully tested with Matlab R2013a Student Version (8.1.0.604) under Windows 8.1 and Windows 7 Starter (Service Pack 1)
 Project
 -------------------------------
 ### Essentials

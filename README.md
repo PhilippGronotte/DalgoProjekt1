@@ -65,7 +65,7 @@ in the chosen programm directory.
 
 The programm updates it's weather data from www.wunderground.com. A working internet conection is necessary for that reason.
 
-The program is completly in german language. Further information can be found in englis language can be found in 'Usage'.
+The program is completly in german language. Further information found in english language can be found in 'Usage'.
 
 ### Usage
 In the following the general usage of the GUI ist shortly described. In the first picture represents the user interface.

@@ -1,3 +1,6 @@
+function [dateday,datemonth,tmax,tmin,chancerain,avewind,rainfall,snowfall,humidity,weekday] = getweatherxml()
+
+
 path = urlwrite('http://api.wunderground.com/api/aad6eaa289129b55/forecast10day/q/Germany/Oldenburg.xml', 'weather.xml');
 xml = xmlread('weather.xml');
 weatherdata= parse_xml(xml);
@@ -36,4 +39,3 @@ end
 %speichern; mit weekday(x,1:9) kann auf die einzelnen Wochentage
 %zugegriffen werden, x ist dabei eine Zahl zwischen 1 und 10
 weekday=strvcat([data{21:30}]);
-

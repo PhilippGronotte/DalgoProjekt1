@@ -1,16 +1,7 @@
 %------------Your script starts here-------- 
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-close all;
 
-%Aufruf der Funktion getweatherxml(), die die Daten aus der xml-Datei
-%ausliest
-=======
-=======
->>>>>>> a48e1dd3721a1800576e42ca86b389ebd040645d
-% aus dem internet rausgezogenen variablen
->>>>>>> a48e1dd3721a1800576e42ca86b389ebd040645d
+close all;
 
 [dateday,datemonth,tmax,tmin,chancerain,avewind,rainfall,snowfall,humidity,weekday,monthname] = getweatherxml();
 

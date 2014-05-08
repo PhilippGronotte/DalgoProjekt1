@@ -15,18 +15,18 @@ Contents
 									
 #Authors
 ------------------------------
-The present Matlab programm is a semester project of the following students:
+The present Matlab program is a semester project of the following students:
 
-Caterina Berndt
-caterina.berndt@student.jade-hs.de
+Caterina Berndt  
+caterina.berndt@student.jade-hs.de  
 Matrikelnummer: 6004908
 
-Philipp Gronotte
-philipp.gronotte@student.jade-hs.de
-Matrikelnummer: 6005858
+Philipp Gronotte  
+philipp.gronotte@student.jade-hs.de  
+Matrikelnummer: 6005858  
 
-Tarik Siebe
-tarik.siebe@student.jade-hs.de
+Tarik Siebe  
+tarik.siebe@student.jade-hs.de  
 Matrikelnummer: 6004941
 
 Motivation
@@ -47,7 +47,7 @@ Installation
 
   [http://git-scm.com/](http://git-scm.com/)
 
-The programm was sucessfully tested with Matlab R2013a Student Version (8.1.0.604) under Windows 8.1 and Windows 7 Starter (Service Pack 1)
+The program was sucessfully tested with Matlab R2013a Student Version (8.1.0.604) under Windows 8.1 and Windows 7 Starter (Service Pack 1)
 Project
 -------------------------------
 ### Essentials
@@ -66,12 +66,12 @@ After the first execution you will also find a file called:
 
 in the chosen programm directory.
 
-The programm updates it's weather data from www.wunderground.com. A working internet conection is necessary for that reason.
+The program updates its weather data from www.wunderground.com. A working internet conection is necessary for that reason.
 
-The program is completly in german language. Further information found in english language can be found in 'Usage'.
+The program is completely in German language. Further information in English language can be found in 'Usage'.
 
 ### Usage
-In the following the general usage of the GUI ist shortly described. In the first picture represents the user interface.
+In the following the general usage of the GUI ist shortly described. The first picture represents the user interface.
 
 ![User Interface](http://i1295.photobucket.com/albums/b635/Phoenix_Granite/explanation_zps5128c171.jpg)
 
@@ -83,7 +83,7 @@ The displayed data can be chosen in the dropdown menu below the plot.
 
 ![Dropdown menu](http://i1295.photobucket.com/albums/b635/Phoenix_Granite/explanation2_zpsbbb714c3.jpg)
 
-The radiobutton menu allows you to choose a day whose weather data is said to be shown in detail.
+The radiobutton menu allows to choose a day whose weather data is said to be shown in detail.
 
 ![Radiobutton group](http://i1295.photobucket.com/albums/b635/Phoenix_Granite/explanation3_zps54e574d6.jpg) 
 
@@ -91,9 +91,9 @@ The detailed weather data for the chosen day can be found below the dropdown men
 
 ![Textboxes](http://i1295.photobucket.com/albums/b635/Phoenix_Granite/explanation5_zpse173f0e7.jpg)
 
-On the right side is a short oversight placed. You can find the actual date as well as the maximum and the minimum temperature in it.
+On the right side is a short oversight placed which shows the actual date as well as the maximum and the minimum temperature.
 
-At long last a short overview on the features:
+At long last, a short overview on the features:
 
 - 10 days weather forecast
 
@@ -105,7 +105,7 @@ At long last a short overview on the features:
   - Luftfeuchtigkeit in % (humidity)
   - Regenwahrscheinlichkeit in % (chance of rain)
   - Windgeschwindigkeit in km/h (windspeed)
-  - Schneefallwahrscheinlichkeit in cm (chance of snow)
+  - Neuschneemenge in cm (snowfall in cm)
 
 - Each day with related data single displayable  
 

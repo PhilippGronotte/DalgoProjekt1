@@ -4,7 +4,7 @@ clear;
 close all;
 clc;
 
-prompt = '';
+prompt = 'Bitte geben Sie eine deutsche Stadt Ihrer Wahl ein:';
 town = inputdlg(prompt,'s');
 town = char(town{1,1});
 [dateday,datemonth,tmax,tmin,chancerain,avewind,rainfall,snowfall,humidity,weekday,monthname] = getweatherxml(town);

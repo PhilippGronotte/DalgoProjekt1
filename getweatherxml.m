@@ -1,7 +1,7 @@
-function [dateday,datemonth,tmax,tmin,chancerain,avewind,rainfall,snowfall,humidity,weekday,monthname] = getweatherxml()
+function [dateday,datemonth,tmax,tmin,chancerain,avewind,rainfall,snowfall,humidity,weekday,monthname] = getweatherxml(town)
 
-
-path = urlwrite('http://api.wunderground.com/api/aad6eaa289129b55/forecast10day/q/Germany/Oldenburg.xml', 'weather.xml');
+test = sprintf('http://api.wunderground.com/api/aad6eaa289129b55/forecast10day/q/Germany/%s.xml',town) ;
+path = urlwrite(test, 'weather.xml');
 xml = xmlread('weather.xml');
 weatherdata= parse_xml(xml);
 

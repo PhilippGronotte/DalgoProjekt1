@@ -18,16 +18,16 @@ Contents
 The present Matlab program is a semester project of the following students:
 
 Caterina Berndt  
-caterina.berndt@student.jade-hs.de  
-Matrikelnummer: 6004908
+caterina.berndt_[at]student.jade-hs.de  
+Matrikelnummer: 600****
 
 Philipp Gronotte  
-philipp.gronotte@student.jade-hs.de  
-Matrikelnummer: 6005858  
+philipp.gronotte_[at]student.jade-hs.de  
+Matrikelnummer: 600****  
 
 Tarik Siebe  
-tarik.siebe@student.jade-hs.de  
-Matrikelnummer: 6004941
+tarik.siebe_[at]student.jade-hs.de  
+Matrikelnummer: 600****
 
 Motivation
 -------------------------------

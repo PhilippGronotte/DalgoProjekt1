@@ -1,9 +1,13 @@
 %------------Your script starts here-------- 
 
-
+clear;
 close all;
+clc;
 
-[dateday,datemonth,tmax,tmin,chancerain,avewind,rainfall,snowfall,humidity,weekday,monthname] = getweatherxml();
+prompt = '';
+town = inputdlg(prompt,'s');
+town = char(town{1,1});
+[dateday,datemonth,tmax,tmin,chancerain,avewind,rainfall,snowfall,humidity,weekday,monthname] = getweatherxml(town);
 
 %Erstellen einer Figure
 figure_nr = figure;

@@ -1,25 +1,33 @@
-function [] = Grafik_einbinden(rainfall,tmin,tmax,avewind,humidity,chancerain,...
-            snowfall,axes_feld)
-% function to do something usefull (fill out)
-% Usage [out_param] = Grafik_einbinden(in_param)
-% Input Parameter:
-%	 in_param: 		 Explain the parameter, default values, and units
-% Output Parameter:
-%	 out_param: 	 Explain the parameter, default values, and units
+function [] = Grafik_einbinden(tmin,tmax,axes_feld)
+% function include a grafik
 %------------------------------------------------------------------------ 
-% Example: Provide example here if applicable (one or two lines) 
-
 % Author: TS (c) IHA @ Jade Hochschule applied licence see EOF 
 % Version History:
-% Ver. 0.01 initial create (empty) 13-May-2014  Initials (eg. JB)
+% Ver. 0.01 initial create (TS) 13-May-2014  Initials (eg. TS)
 
 %------------Your function implementation here--------------------------- 
+Tdurchnit=(tmin+tmax)/2;
+% Wählt Bild in abhängigkeit zur temperatur aus
+if Tdurchnit >= 30
+    Bild='Bild.png';
+elseif Tdurchnit < 30 & Tdurchnit >= 20
+    Bild='Bild.png';
+elseif Tdurchnit < 20 & Tdurchnit >= 10
+    Bild='Bild.png';
+elseif Tdurchnit < 10 & Tdurchnit >= 0
+    Bild='Bild.png';
+else
+    Bild='Bild.png' ;   
+end
 
+%--------------------------------------------------------------------------
+
+% Bindet Bild in die figure ein
 axes(axes_feld)
- pressPic = imread('Bild.png');
-    image([0 1],[0 1],pressPic);
+pressPic = imread(Bild);
+image([0 1],[0 1],pressPic);
 axis equal;
-   axis off;
+axis off;
 
 
 %--------------------Licence ---------------------------------------------

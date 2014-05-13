@@ -4,19 +4,21 @@ clear;
 close all;
 clc;
 
+%--------------------------------------------------------------------------
+
 prompt = 'Bitte geben Sie eine deutsche Stadt Ihrer Wahl ein:';
-town = inputdlg(prompt,'s');
+town = inputdlg(prompt);
 town = char(town{1,1});
 [dateday,datemonth,tmax,tmin,chancerain,avewind,rainfall,snowfall,humidity,weekday,monthname] = getweatherxml(town);
+%--------------------------------------------------------------------------
 
 %Erstellen einer Figure
-figure_nr = figure('MenuBar','none');
-%Festlegen der Hintergrundfarbe 
-set(figure_nr,'Color','w')
+figure_nr = figure('MenuBar','none','Color','w','Name','Wetteranzeige','NumberTitle','off');
 
 %Festlegen des ersten Datums
 date = 1;
 
+%--------------------------------------------------------------------------
 %Erster plot der höchsten und niedrigsten Temperatur
 subplot(2,1,1)
 hold on
@@ -29,9 +31,13 @@ set(gca,'XTickLabel',{weekday(1,1:3),weekday(2,1:3),weekday(3,1:3),...
     weekday(8,1:3),weekday(9,1:3),weekday(10,1:3),})
 plot(tmax,'r')
 
-menu=uimenu(figure_nr,'Label','menü')
+%--------------------------------------------------------------------------
+
+% erstellen einer Menüleiste
+menu=uimenu(figure_nr,'Label','menü');
 uimenu(menu,'Label','Schließen','callback','close all')
 
+%--------------------------------------------------------------------------
 
 %Popupmenü zur Auswahl der Grafik erstellen, die Funktion wetterplots3
 %beinhaltet die einzelnen Dartsellungen
@@ -41,60 +47,54 @@ uimenu(menu,'Label','Schließen','callback','close all')
     'units', 'normalized', 'Position', [0.12 -0.05 0.4 0.5], 'tag', 'popupmenu',...
     'callback', {@wetterplots,tmax,tmin,avewind,humidity,chancerain,snowfall,figure_nr,weekday,rainfall})
 
+%--------------------------------------------------------------------------
 %Textfeld für das gewählte Datum erstellen
-    Datum_text=sprintf('%i. %s',dateday(date),monthname(date,(1:3)));
-  
-    Datum=uicontrol(figure_nr, 'style', 'text','string', Datum_text, 'units',...
-      'normalized','Position', [0.65 0.38 0.2 0.08]);
-%Schriftgröße festlegen
-    set(Datum,'FontSize',18)
 
-%Textfeld für die maximale Temperatur 
-    Tmax_text=sprintf(' Max: %i °C' ,tmax(date));
+Datum_text=sprintf('%i. %s',dateday(date),monthname(date,(1:3)));
   
-    Tmax=uicontrol(figure_nr, 'style', 'text','string', Tmax_text, 'units',...
-        'normalized','Position', [0.65 0.24 0.2 0.1]); 
-    %Schriftgröße festlegen
-      set(Tmax,'FontSize',16)
-    %Hintergrundfarbe festlegen
-      set(Tmax,'BackgroundColor','w')
-    %Farbe der Schrift festlegen
-      set(Tmax,'ForegroundColor','r')
+Datum=uicontrol(figure_nr, 'style', 'text','string', Datum_text, 'units',...
+                'normalized','Position', [0.65 0.38 0.2 0.08],'FontSize',18);
+  
+
+%Textfeld für die maximale Temperatur
+Tmax_text=sprintf(' Max: %i °C' ,tmax(date));
+  
+Tmax=uicontrol(figure_nr, 'style', 'text','string', Tmax_text, 'units',...
+              'normalized','Position', [0.65 0.24 0.2 0.1],'FontSize',...
+              16,'BackgroundColor','w','ForegroundColor','r'); 
+
       
 %Textfeld für die minimale Temperatur
-    Tmin_text=sprintf(' Min: %i °C' ,tmin(date));
+Tmin_text=sprintf(' Min: %i °C' ,tmin(date));
  
-    Tmin=uicontrol(figure_nr, 'style', 'text','string', Tmin_text, 'units',...
-        'normalized','Position', [0.65 0.14 0.2 0.1]);
-    %Schriftgröße festlegen
-      set(Tmin,'FontSize',16)
-    %Hintergrundfarbe festlegen
-      set(Tmin,'BackgroundColor','w')
-    %Farbe der Schrift festlegen
-      set(Tmin,'ForegroundColor','b')
+Tmin=uicontrol(figure_nr, 'style', 'text','string', Tmin_text, 'units',...
+              'normalized','Position', [0.65 0.14 0.2 0.1],'FontSize',...
+              16,'BackgroundColor','w','ForegroundColor','b');
+
 
 %Textfeld für die Tägliche Windgeschwindigkeit
-    avewind_text=sprintf('Die Windgeschwindigkeit am %i.%i beträgt %i km/h'...
-        ,dateday(date),datemonth(date),avewind(date));
+avewind_text=sprintf('Die Windgeschwindigkeit am %i.%i beträgt %i km/h'...
+                     ,dateday(date),datemonth(date),avewind(date));
 
-    avewind_Button=uicontrol(figure_nr, 'style', 'text','string', avewind_text,...
-        'units', 'normalized','Position', [0.12 0.24 0.5 0.03], 'HorizontalAlignment',...
-        'center');
-
+avewind_Button=uicontrol(figure_nr, 'style', 'text','string', avewind_text,...
+                        'units', 'normalized','Position', [0.12 0.24 0.5 0.03],...
+                        'HorizontalAlignment','center');
 
 %Textfeld für die Tägliche Regenwahrscheinlichkeit
-    chancerain_text=sprintf('Die Regenwahrscheinlichkeit am %i.%i beträgt %i %%'...
-        ,dateday(date),datemonth(date),chancerain(date));
+chancerain_text=sprintf('Die Regenwahrscheinlichkeit am %i.%i beträgt %i %%'...
+                        ,dateday(date),datemonth(date),chancerain(date));
 
-    chancerain_Button=uicontrol(figure_nr, 'style', 'text','string', chancerain_text,...
-        'units', 'normalized','Position', [0.12 0.31 0.5 0.03],'HorizontalAlignment','center');
+chancerain_Button=uicontrol(figure_nr, 'style', 'text','string', chancerain_text,...
+                            'units', 'normalized','Position', [0.12 0.31 0.5 0.03],...
+                            'HorizontalAlignment','center');
 
 %Textfeld für die Tägliche Luftfeuschtigkeit
-    humidity_text=sprintf('Die Luftfeuchtigkeit am %i.%i beträgt %i %%',...
-        dateday(date),datemonth(date),humidity(date));
+humidity_text=sprintf('Die Luftfeuchtigkeit am %i.%i beträgt %i %%',...
+                       dateday(date),datemonth(date),humidity(date));
 
 humidity_Button=uicontrol(figure_nr, 'style', 'text','string', humidity_text,...
-    'units', 'normalized','Position', [0.12 0.17 0.5 0.03],'HorizontalAlignment','center');
+                          'units', 'normalized','Position', [0.12 0.17 0.5 0.03],...
+                          'HorizontalAlignment','center');
 
 %Textfeld für die Tägliche Niederschlagsmenge
 rainfall_text=sprintf('Die Niederschlagsmenge am %i.%i beträgt %i mm',...
@@ -106,26 +106,28 @@ rainfall_Button=uicontrol(figure_nr, 'style', 'text','string', rainfall_text,'un
 %Textfeld für die Tägliche Schneefallwahrscheinlichkeit
 
 snowfall_text=sprintf('Die Neuschneemenge am %i.%i beträgt %i cm', dateday(date),...
-    datemonth(date),snowfall(date));
+                      datemonth(date),snowfall(date));
 
 snowfall_Button=uicontrol(figure_nr, 'style', 'text','string', snowfall_text,...
-    'units', 'normalized','Position', [0.12 0.03 0.5 0.03],'HorizontalAlignment','center');
+                          'units', 'normalized','Position', [0.12 0.03 0.5 0.03],...
+                          'HorizontalAlignment','center');
+%--------------------------------------------------------------------------
 
 % kreation eines container für grafiken
-   axes_feld=axes('Parent',figure_nr,'Units','normalized',...
-            'Position',[0 0 0.25 0.333])
-        Grafik_einbinden(rainfall,tmin,tmax,avewind,humidity,chancerain,...
-            snowfall,axes_feld)
-   axis equal;
-   axis off;
+axes_feld=axes('Parent',figure_nr,'Units','normalized',...
+               'Position',[0 0 0.25 0.333]);
+               %Positions änderung der Grafik
+Grafik_einbinden(tmin,tmax,axes_feld)
+axis equal;
+axis off;
 
+%--------------------------------------------------------------------------
 
 % radiobutten gruppe
 buttongroup=uibuttongroup('Position',[0.12 0.49 0.8 0.05],'SelectionChangeFcn',...
             {@Tagesanzeige,rainfall,tmin,tmax,avewind,humidity,chancerain,...
             snowfall,figure_nr,dateday,datemonth,monthname,chancerain_Button,...
             avewind_Button,humidity_Button,rainfall_Button,snowfall_Button,Tmax,Tmin,Datum,axes_feld});
-        
         
 
 %radiobuttens für die radiobuttengruppe

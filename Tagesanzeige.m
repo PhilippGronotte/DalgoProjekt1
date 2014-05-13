@@ -2,13 +2,14 @@ function [] = Tagesanzeige(handle, event, rainfall, tmin, tmax, Windgeschwindigk
     Luftfeuchtigkeit, Regenwahrscheinlichkeit, Schneefallwahrscheinlichkeit,figure_nr,...
     Tag, Monat, monthname, Regenwahrscheinlichkeit_Button, Windgeschwindigkeit_Button,...
     Luftfeuchtigkeit_Button, rainfall_Button, Schneefallwahrscheinlichkeit_Button,...
-    Tmax, Tmin, Datum)
+    Tmax, Tmin, Datum,axes_feld)
 
 %------------Your function implementation here--------------------------- 
 
 % Auslessen des gewählten radiobuttens
 date = str2double(get(get(handle, 'SelectedObject'),'Tag'));
-
+Grafik_einbinden(rainfall,tmin,tmax,Windgeschwindigkeit,Luftfeuchtigkeit,Regenwahrscheinlichkeit,...
+                 Schneefallwahrscheinlichkeit,axes_feld)
 
 % Aktualisieren der Texte die in die Textfelder eingetragen werden sollen
 Windgeschwindigkeit_text=sprintf('Die Windgeschwindigkeit am %i.%i beträgt %i kmh'...
@@ -46,4 +47,6 @@ set(Schneefallwahrscheinlichkeit_Button,'string',Schneefallwahrscheinlichkeit_te
 set(Tmax,'string',Tmax_text)
 set(Tmin,'string',Tmin_text)
 set(Datum,'string',Datum_text)
+
+
 

@@ -10,7 +10,7 @@ town = char(town{1,1});
 [dateday,datemonth,tmax,tmin,chancerain,avewind,rainfall,snowfall,humidity,weekday,monthname] = getweatherxml(town);
 
 %Erstellen einer Figure
-figure_nr = figure;
+figure_nr = figure('MenuBar','none');
 %Festlegen der Hintergrundfarbe 
 set(figure_nr,'Color','w')
 
@@ -28,6 +28,10 @@ set(gca,'XTickLabel',{weekday(1,1:3),weekday(2,1:3),weekday(3,1:3),...
     weekday(4,1:3),weekday(5,1:3),weekday(6,1:3),weekday(7,1:3),...
     weekday(8,1:3),weekday(9,1:3),weekday(10,1:3),})
 plot(tmax,'r')
+
+menu=uimenu(figure_nr,'Label','menü')
+uimenu(menu,'Label','Schließen','callback','close all')
+
 
 %Popupmenü zur Auswahl der Grafik erstellen, die Funktion wetterplots3
 %beinhaltet die einzelnen Dartsellungen
@@ -107,12 +111,23 @@ snowfall_text=sprintf('Die Neuschneemenge am %i.%i beträgt %i cm', dateday(date)
 snowfall_Button=uicontrol(figure_nr, 'style', 'text','string', snowfall_text,...
     'units', 'normalized','Position', [0.12 0.03 0.5 0.03],'HorizontalAlignment','center');
 
+% kreation eines container für grafiken
+   axes_feld=axes('Parent',figure_nr,'Units','normalized',...
+            'Position',[0 0 0.25 0.333])
+        Grafik_einbinden(rainfall,tmin,tmax,avewind,humidity,chancerain,...
+            snowfall,axes_feld)
+   axis equal;
+   axis off;
+
+
 % radiobutten gruppe
 buttongroup=uibuttongroup('Position',[0.12 0.49 0.8 0.05],'SelectionChangeFcn',...
             {@Tagesanzeige,rainfall,tmin,tmax,avewind,humidity,chancerain,...
             snowfall,figure_nr,dateday,datemonth,monthname,chancerain_Button,...
-            avewind_Button,humidity_Button,rainfall_Button,snowfall_Button,Tmax,Tmin,Datum});
-    
+            avewind_Button,humidity_Button,rainfall_Button,snowfall_Button,Tmax,Tmin,Datum,axes_feld});
+        
+        
+
 %radiobuttens für die radiobuttengruppe
 uicontrol(figure_nr, 'style', 'radiobutton',...
     'units', 'normalized','Position', [0 0.05 0.03 1],...
@@ -153,3 +168,4 @@ uicontrol(figure_nr, 'style', 'radiobutton',...
 uicontrol(figure_nr, 'style', 'radiobutton',...
     'units', 'normalized','Position', [0.975 0.05 0.03 1],...
     'parent',buttongroup,'Tag','10')
+

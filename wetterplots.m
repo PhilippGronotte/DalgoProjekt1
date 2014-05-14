@@ -8,6 +8,8 @@ function [] = wetterplots(handle, event,Hoehst_temp,Niedrigst_temp,Windgeschwind
 % liest denn aktuellen ausgewählte popup aus
  value = get(handle, 'value');
 
+ %--------------------------------------------------------------------------
+
  %plot der Höchsten und Niedrigsten Temperatur
 if value == 1
     figure(figure_nr)
@@ -23,7 +25,9 @@ if value == 1
         weekday(4,1:3),weekday(5,1:3),weekday(6,1:3),weekday(7,1:3),...
         weekday(8,1:3),weekday(9,1:3),weekday(10,1:3)})
 
- %plot der Niedriegsen Temperatur
+%--------------------------------------------------------------------------
+
+%plot der Niedriegsen Temperatur
 elseif value == 2
     figure(figure_nr)
     subplot(2,1,1)
@@ -36,7 +40,9 @@ elseif value == 2
         weekday(4,1:3),weekday(5,1:3),weekday(6,1:3),weekday(7,1:3),...
         weekday(8,1:3),weekday(9,1:3),weekday(10,1:3)})
 
- %plot der Höchsten Temperatur
+%--------------------------------------------------------------------------
+
+%plot der Höchsten Temperatur
 elseif value == 3
     figure(figure_nr)
     subplot(2,1,1)
@@ -49,7 +55,9 @@ elseif value == 3
         weekday(4,1:3),weekday(5,1:3),weekday(6,1:3),weekday(7,1:3),...
         weekday(8,1:3),weekday(9,1:3),weekday(10,1:3)})
 
- %plot der Niederschlagsmenge
+%--------------------------------------------------------------------------
+
+%plot der Niederschlagsmenge
 elseif value == 4
      figure(figure_nr)
      subplot(2,1,1)
@@ -62,7 +70,9 @@ elseif value == 4
         weekday(4,1:3),weekday(5,1:3),weekday(6,1:3),weekday(7,1:3),...
         weekday(8,1:3),weekday(9,1:3),weekday(10,1:3)})
 
- %plot der Luftfeuchtigkeit
+%--------------------------------------------------------------------------
+
+%plot der Luftfeuchtigkeit
 elseif value == 5
     figure(figure_nr)
     subplot(2,1,1)
@@ -75,7 +85,9 @@ elseif value == 5
         weekday(4,1:3),weekday(5,1:3),weekday(6,1:3),weekday(7,1:3),...
         weekday(8,1:3),weekday(9,1:3),weekday(10,1:3)})
 
- %plot der Regenwahrscheinlichkeit
+%--------------------------------------------------------------------------
+
+%plot der Regenwahrscheinlichkeit
 elseif value == 6
     figure(figure_nr)
     subplot(2,1,1)
@@ -88,7 +100,9 @@ elseif value == 6
         weekday(4,1:3),weekday(5,1:3),weekday(6,1:3),weekday(7,1:3),...
         weekday(8,1:3),weekday(9,1:3),weekday(10,1:3)})
 
- %plot der Windgeschwindigkeit
+%--------------------------------------------------------------------------
+
+%plot der Windgeschwindigkeit
 elseif value == 7
     figure(figure_nr)
     subplot(2,1,1)
@@ -100,6 +114,8 @@ elseif value == 7
     set(gca,'XTickLabel',{weekday(1,1:3),weekday(2,1:3),weekday(3,1:3),...
         weekday(4,1:3),weekday(5,1:3),weekday(6,1:3),weekday(7,1:3),...
         weekday(8,1:3),weekday(9,1:3),weekday(10,1:3)})
+
+%--------------------------------------------------------------------------
 
 %plot der Schneefallwahrscheinlichkeit
 else

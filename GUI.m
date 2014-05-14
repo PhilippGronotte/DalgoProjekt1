@@ -12,8 +12,8 @@ town = char(town{1,1});
 %Erstellen einer Figure
 figure_nr = figure;
 %Festlegen der Hintergrundfarbe 
-set(figure_nr,'Color','w')
-
+set(figure_nr,'Color',[0.9583 0.9583 0.9583])
+set(gcf, 'Units', 'Normalized', 'OuterPosition', [0 0 0.75 0.9]);
 %Festlegen des ersten Datums
 date = 1;
 
@@ -29,7 +29,7 @@ set(gca,'XTickLabel',{weekday(1,1:3),weekday(2,1:3),weekday(3,1:3),...
     weekday(8,1:3),weekday(9,1:3),weekday(10,1:3),})
 plot(tmax,'r')
 
-%Popupmenü zur Auswahl der Grafik erstellen, die Funktion wetterplots3
+%Dropdownmenü zur Auswahl der Grafik erstellen, die Funktion wetterplots3
 %beinhaltet die einzelnen Dartsellungen
  uicontrol(figure_nr, 'style', 'popupmenu', 'string', {'Höchste und Niedrigste Temperatur'...
     'Niedrigste Temperatur' 'Höchste Temperatur' 'Niederschlagsmenge' 'Luftfeuchtigkeit'...

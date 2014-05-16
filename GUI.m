@@ -6,17 +6,18 @@ clc;
 
 %--------------------------------------------------------------------------
 
-prompt = 'Bitte geben Sie eine deutsche Stadt Ihrer Wahl ein:';
-town = inputdlg(prompt);
-town = char(town{1,1});
-[dateday,datemonth,tmax,tmin,chancerain,avewind,rainfall,snowfall,humidity,weekday,monthname] = getweatherxml(town);
+% prompt = 'Bitte geben Sie eine deutsche Stadt Ihrer Wahl ein:';
+% town = inputdlg(prompt);
+% town = char(town{1,1});
+town = 'Kiel';
+[dateday,datemonth,tmax,tmin,chancerain,avewind,rainfall,snowfall,humidity,weekday,monthname,icon] = getweatherxml(town);
 %--------------------------------------------------------------------------
 
 %Erstellen einer Figure
 figure_nr = figure('MenuBar','none','Color','w','Name','Wetteranzeige','NumberTitle','off');
-
+set(figure_nr,'units','normalized','Position', [0 0 0.75 0.8],'Color',[0.6 0.6 0.6])
 %Festlegen des ersten Datums
-date = 1;
+date_actual = 1;
 
 %--------------------------------------------------------------------------
 %Erster plot der höchsten und niedrigsten Temperatur
@@ -50,14 +51,14 @@ uimenu(menu,'Label','Schließen','callback','close all')
 %--------------------------------------------------------------------------
 %Textfeld für das gewählte Datum erstellen
 
-Datum_text=sprintf('%i. %s',dateday(date),monthname(date,(1:3)));
+Datum_text=sprintf('%i. %s',dateday(date_actual),monthname(date_actual,(1:3)));
   
 Datum=uicontrol(figure_nr, 'style', 'text','string', Datum_text, 'units',...
                 'normalized','Position', [0.65 0.38 0.2 0.08],'FontSize',18);
   
 
 %Textfeld für die maximale Temperatur
-Tmax_text=sprintf(' Max: %i °C' ,tmax(date));
+Tmax_text=sprintf(' Max: %i °C' ,tmax(date_actual));
   
 Tmax=uicontrol(figure_nr, 'style', 'text','string', Tmax_text, 'units',...
               'normalized','Position', [0.65 0.24 0.2 0.1],'FontSize',...
@@ -65,7 +66,7 @@ Tmax=uicontrol(figure_nr, 'style', 'text','string', Tmax_text, 'units',...
 
       
 %Textfeld für die minimale Temperatur
-Tmin_text=sprintf(' Min: %i °C' ,tmin(date));
+Tmin_text=sprintf(' Min: %i °C' ,tmin(date_actual));
  
 Tmin=uicontrol(figure_nr, 'style', 'text','string', Tmin_text, 'units',...
               'normalized','Position', [0.65 0.14 0.2 0.1],'FontSize',...
@@ -74,7 +75,7 @@ Tmin=uicontrol(figure_nr, 'style', 'text','string', Tmin_text, 'units',...
 
 %Textfeld für die Tägliche Windgeschwindigkeit
 avewind_text=sprintf('Die Windgeschwindigkeit am %i.%i beträgt %i km/h'...
-                     ,dateday(date),datemonth(date),avewind(date));
+                     ,dateday(date_actual),datemonth(date_actual),avewind(date_actual));
 
 avewind_Button=uicontrol(figure_nr, 'style', 'text','string', avewind_text,...
                         'units', 'normalized','Position', [0.12 0.24 0.5 0.03],...
@@ -82,15 +83,15 @@ avewind_Button=uicontrol(figure_nr, 'style', 'text','string', avewind_text,...
 
 %Textfeld für die Tägliche Regenwahrscheinlichkeit
 chancerain_text=sprintf('Die Regenwahrscheinlichkeit am %i.%i beträgt %i %%'...
-                        ,dateday(date),datemonth(date),chancerain(date));
+                        ,dateday(date_actual),datemonth(date_actual),chancerain(date_actual));
 
 chancerain_Button=uicontrol(figure_nr, 'style', 'text','string', chancerain_text,...
                             'units', 'normalized','Position', [0.12 0.31 0.5 0.03],...
                             'HorizontalAlignment','center');
 
-%Textfeld für die Tägliche Luftfeuschtigkeit
+%Textfeld für die Tägliche Luftfeuchtigkeit
 humidity_text=sprintf('Die Luftfeuchtigkeit am %i.%i beträgt %i %%',...
-                       dateday(date),datemonth(date),humidity(date));
+                       dateday(date_actual),datemonth(date_actual),humidity(date_actual));
 
 humidity_Button=uicontrol(figure_nr, 'style', 'text','string', humidity_text,...
                           'units', 'normalized','Position', [0.12 0.17 0.5 0.03],...
@@ -98,26 +99,27 @@ humidity_Button=uicontrol(figure_nr, 'style', 'text','string', humidity_text,...
 
 %Textfeld für die Tägliche Niederschlagsmenge
 rainfall_text=sprintf('Die Niederschlagsmenge am %i.%i beträgt %i mm',...
-    dateday(date),datemonth(date),rainfall(date));
+    dateday(date_actual),datemonth(date_actual),rainfall(date_actual));
 
 rainfall_Button=uicontrol(figure_nr, 'style', 'text','string', rainfall_text,'units',...
     'normalized','Position', [0.12 0.1 0.5 0.03],'HorizontalAlignment','center');
 
 %Textfeld für die Tägliche Schneefallwahrscheinlichkeit
 
-snowfall_text=sprintf('Die Neuschneemenge am %i.%i beträgt %i cm', dateday(date),...
-                      datemonth(date),snowfall(date));
+snowfall_text=sprintf('Die Neuschneemenge am %i.%i beträgt %i cm', dateday(date_actual),...
+                      datemonth(date_actual),snowfall(date_actual));
 
 snowfall_Button=uicontrol(figure_nr, 'style', 'text','string', snowfall_text,...
                           'units', 'normalized','Position', [0.12 0.03 0.5 0.03],...
                           'HorizontalAlignment','center');
 %--------------------------------------------------------------------------
 
-% kreation eines container für grafiken
+% Erzeugung eines container für grafiken
 axes_feld=axes('Parent',figure_nr,'Units','normalized',...
-               'Position',[0 0 0.25 0.333]);
-               %Positions änderung der Grafik
-Grafik_einbinden(tmin,tmax,axes_feld)
+               'Position',[0 0.1 0.1 0.15]);         
+
+% Positions änderung der Grafik
+Grafik_einbinden(icon, axes_feld,date_actual,figure_nr)
 axis equal;
 axis off;
 
@@ -127,7 +129,7 @@ axis off;
 buttongroup=uibuttongroup('Position',[0.12 0.49 0.8 0.05],'SelectionChangeFcn',...
             {@Tagesanzeige,rainfall,tmin,tmax,avewind,humidity,chancerain,...
             snowfall,figure_nr,dateday,datemonth,monthname,chancerain_Button,...
-            avewind_Button,humidity_Button,rainfall_Button,snowfall_Button,Tmax,Tmin,Datum,axes_feld});
+            avewind_Button,humidity_Button,rainfall_Button,snowfall_Button,Tmax,Tmin,Datum,axes_feld,icon});
         
 
 %radiobuttens für die radiobuttengruppe

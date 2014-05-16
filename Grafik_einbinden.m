@@ -1,30 +1,55 @@
-function [] = Grafik_einbinden(tmin,tmax,axes_feld)
+function [] = Grafik_einbinden(icon,axes_feld,Tag,figure_nr)
 % function include a grafik
 %------------------------------------------------------------------------ 
 % Author: TS (c) IHA @ Jade Hochschule applied licence see EOF 
 % Version History:
 % Ver. 0.01 initial create (TS) 13-May-2014  Initials (eg. TS)
 
-%------------Your function implementation here--------------------------- 
-Tdurchnit=(tmin+tmax)/2;
+%------------Your function implementation here----------------------------- 
+
+icon_switch = char(icon(Tag,1:12));
+
+%--------------------------------------------------------------------------
 % Wählt Bild in abhängigkeit zur temperatur aus
-if Tdurchnit >= 30
-    Bild='Bild.png';
-elseif Tdurchnit < 30 & Tdurchnit >= 20
-    Bild='Bild.png';
-elseif Tdurchnit < 20 & Tdurchnit >= 10
-    Bild='Bild.png';
-elseif Tdurchnit < 10 & Tdurchnit >= 0
-    Bild='Bild.png';
-else
-    Bild='Bild.png' ;   
+if strcmp(icon_switch, 'clear       ')|| strcmp(icon_switch, 'sunny       ')
+    Bild='C:\Users\User\Desktop\Weather Forecast\flat_colorful\png\sunny.png';
+elseif strcmp(icon_switch, 'partlycloudy') || strcmp(icon_switch, 'partlysunny ')
+   Bild='C:\Users\User\Desktop\Weather Forecast\flat_colorful\png\partlycloudy.png';
+elseif strcmp(icon_switch,'flurries    ') || strmcp(icon_switchm , 'chanceflurie')
+   Bild='C:\Users\User\Desktop\Weather Forecast\flat_colorful\png\flurries.png';
+elseif strcmp(icon_switch, 'chancerain  ')
+   Bild='C:\Users\User\Desktop\Weather Forecast\flat_colorful\png\chancerain.png';
+elseif strcmp(icon_switch, 'sleet       ') || strcmp(icon_switch, 'chancesleet ')
+   Bild='C:\Users\User\Desktop\Weather Forecast\flat_colorful\png\sleet.png';
+elseif strcmp(icon_switch, 'chancesnow  ')
+   Bild='C:\Users\User\Desktop\Weather Forecast\flat_colorful\png\chancesnow.png';
+elseif strcmp(icon_switch, 'chancetstorm')
+   Bild='C:\Users\User\Desktop\Weather Forecast\flat_colorful\png\chancetstorms.png';
+elseif strcmp(icon_switch, 'cloudy      ')
+   Bild='C:\Users\User\Desktop\Weather Forecast\flat_colorful\png\cloudy.png';
+elseif strcmp(icon_switch, 'fog         ')
+   Bild='C:\Users\User\Desktop\Weather Forecast\flat_colorful\png\fog.png';
+elseif strcmp(icon_switch, 'hazy        ')
+   Bild='C:\Users\User\Desktop\Weather Forecast\flat_colorful\png\hazy.png';
+elseif strcmp(icon_switch, 'mostlycloudy')
+   Bild='C:\Users\User\Desktop\Weather Forecast\flat_colorful\png\mostlycloudy.png';
+elseif strcmp(icon_switch, 'mostlysunny ')
+   Bild='C:\Users\User\Desktop\Weather Forecast\flat_colorful\png\mostlysunny.png';
+elseif strcmp(icon_switch ,'rain        ')
+   Bild='C:\Users\User\Desktop\Weather Forecast\flat_colorful\png\rain.png';
+elseif strcmp(icon_switch ,'snow        ')
+   Bild='C:\Users\User\Desktop\Weather Forecast\flat_colorful\png\snow.png';
+else 
+   Bild='C:\Users\User\Desktop\Weather Forecast\flat_colorful\png\NaN.png';
+
 end
 
 %--------------------------------------------------------------------------
+colorabs=get(figure_nr, 'Color');
 
-% Bindet Bild in die figure ein
 axes(axes_feld)
-pressPic = imread(Bild);
+pressPic = imread(Bild); 
+pressPic(pressPic == 0) = round(colorabs(1,1)*255);
 image([0 1],[0 1],pressPic);
 axis equal;
 axis off;

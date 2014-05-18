@@ -64,5 +64,5 @@ set(Datum,'string',Datum_text)
 
 %--------------------------------------------------------------------------
 
-Grafik_einbinden(icon,axes_feld,date_actual)
+Grafik_einbinden(icon,axes_feld,date_actual,figure_nr)
 

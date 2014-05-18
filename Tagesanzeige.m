@@ -38,18 +38,6 @@ Tmin_text=sprintf(' Min: %i °C' ,tmin(date_actual));
  
 Datum_text=sprintf('%i.%s',Tag(date_actual),monthname(date_actual,1:3));
 
-%--------------------------------------------------------------------------
-% Erzeugung eines container für grafiken
-axes_feld=axes('Parent',figure_nr,'Units','normalized',...
-               'Position',[0 0.1 0.1 0.15]);
-           
-
-% Positionsänderung der Grafik
-Grafik_einbinden(icon, axes_feld,date_actual,figure_nr)
-axis equal;
-axis off;
-
-
 
 %--------------------------------------------------------------------------
 % Aktualisieren des Textfelder mittels set

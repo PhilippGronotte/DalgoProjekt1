@@ -136,6 +136,18 @@ snowfall_Button=uicontrol(figure_nr, 'style', 'text','string', snowfall_text,...
                       
 %--------------------------------------------------------------------------
 
+%Erstellen eines Textfeldes für die ausgeählte Wettervorhersage
+icon_german = translate(icon,date_actual);
+
+Wettervorhersage_text=sprintf('%s',icon_german,1:14);
+  
+Wettervorhersage=uicontrol(figure_nr, 'style', 'text','string', Wettervorhersage_text,...
+                'units', 'normalized', 'Position', [0.6 0.07 0.2 0.08],'FontSize',...
+                12,'HorizontalAlignment','left','Fontweight','bold');
+            
+set(Wettervorhersage,'backgroundcolor', background_fig);
+%--------------------------------------------------------------------------
+
 % Erzeugung eines container für grafiken
 axes_feld=axes('Parent',figure_nr,'Units','normalized',...
                'Position',[0.5 0.2 0.1 0.15]);         
@@ -151,7 +163,8 @@ axis off;
 buttongroup=uibuttongroup('Position',[0.12 0.49 0.8 0.05],'SelectionChangeFcn',...
             {@Tagesanzeige,rainfall,tmin,tmax,avewind,humidity,chancerain,...
             snowfall,figure_nr,dateday,datemonth,monthname,chancerain_Button,...
-            avewind_Button,humidity_Button,rainfall_Button,snowfall_Button,Tmax,Tmin,Datum,axes_feld,icon});
+            avewind_Button,humidity_Button,rainfall_Button,snowfall_Button,Tmax,...
+            Tmin,Datum,Wettervorhersage,axes_feld,icon});
         
 
 %radiobuttens für die radiobuttengruppe

@@ -45,7 +45,7 @@ axes_feld=axes('Parent',figure_nr,'Units','normalized',...
            
 
 % Positionsänderung der Grafik
-Grafik_einbinden(icon, axes_feld,date_actual)
+Grafik_einbinden(icon, axes_feld,date_actual,figure_nr)
 axis equal;
 axis off;
 

@@ -15,15 +15,18 @@ if value == 1
     figure(figure_nr)
     subplot(2,1,1)
     hold off
-    plot(Niedrigst_temp,'b')
-    title('Höchste und niedrigste Temperatur der nächsten 10 Tage')
-    ylabel('Temperatur in °')
+    plot_tmin = plot(Niedrigst_temp,'b');
+    set(plot_tmin,'LineWidth',2)
+    main_title = title('Höchste und niedrigste Temperatur der nächsten 10 Tage in °C');
     hold on
-    plot(Hoehst_temp,'r')    
+    plot_tmax = plot(Hoehst_temp,'r');
+    set(plot_tmax,'LineWidth',2)    
     set(gca,'XTick',[1 2 3 4 5 6 7 8 9 10])
     set(gca,'XTickLabel',{weekday(1,1:3),weekday(2,1:3),weekday(3,1:3),...
         weekday(4,1:3),weekday(5,1:3),weekday(6,1:3),weekday(7,1:3),...
         weekday(8,1:3),weekday(9,1:3),weekday(10,1:3)})
+    set(main_title,'Fontweight','bold')
+    set(main_title,'Fontsize',12)
 
 %--------------------------------------------------------------------------
 
@@ -32,14 +35,16 @@ elseif value == 2
     figure(figure_nr)
     subplot(2,1,1)
     hold off
-    plot(Niedrigst_temp,'r')
-    title('Niedrigste Temperatur der nächsten 10 Tage')
-    ylabel('Temperatur in °')    
+    plot_tmin = plot(Niedrigst_temp,'b');
+    set(plot_tmin,'LineWidth',2)
+    main_title = title('Niedrigste Temperatur der nächsten 10 Tage in °C') 
     set(gca,'XTick',[1 2 3 4 5 6 7 8 9 10])
     set(gca,'XTickLabel',{weekday(1,1:3),weekday(2,1:3),weekday(3,1:3),...
         weekday(4,1:3),weekday(5,1:3),weekday(6,1:3),weekday(7,1:3),...
         weekday(8,1:3),weekday(9,1:3),weekday(10,1:3)})
-
+    set(main_title,'Fontweight','bold')
+    set(main_title,'Fontsize',12)
+    
 %--------------------------------------------------------------------------
 
 %plot der Höchsten Temperatur
@@ -47,14 +52,16 @@ elseif value == 3
     figure(figure_nr)
     subplot(2,1,1)
     hold off
-    plot(Hoehst_temp)
-    title('Höchste Temperatur der nächsten 10 Tage')
-    ylabel('Temperatur in °') 
+    plot_tmax = plot(Hoehst_temp,'r');
+    set(plot_tmax,'LineWidth',2)
+    main_title = title('Höchste Temperatur der nächsten 10 Tage in °C');
     set(gca,'XTick',[1 2 3 4 5 6 7 8 9 10])
     set(gca,'XTickLabel',{weekday(1,1:3),weekday(2,1:3),weekday(3,1:3),...
         weekday(4,1:3),weekday(5,1:3),weekday(6,1:3),weekday(7,1:3),...
         weekday(8,1:3),weekday(9,1:3),weekday(10,1:3)})
-
+    set(main_title,'Fontweight','bold')
+    set(main_title,'Fontsize',12)
+    
 %--------------------------------------------------------------------------
 
 %plot der Niederschlagsmenge
@@ -62,14 +69,15 @@ elseif value == 4
      figure(figure_nr)
      subplot(2,1,1)
      hold off
-     plot(rainfall)
-     title('Niederschlagsmenge in mm der nächsten 10 Tage')
-     ylabel('Niederschlagsmenge in mm')     
+     bar(rainfall)
+     main_title = title('Niederschlagsmenge in mm der nächsten 10 Tage in mm');    
     set(gca,'XTick',[1 2 3 4 5 6 7 8 9 10])
     set(gca,'XTickLabel',{weekday(1,1:3),weekday(2,1:3),weekday(3,1:3),...
         weekday(4,1:3),weekday(5,1:3),weekday(6,1:3),weekday(7,1:3),...
         weekday(8,1:3),weekday(9,1:3),weekday(10,1:3)})
-
+    set(main_title,'Fontweight','bold')
+    set(main_title,'Fontsize',12)
+    
 %--------------------------------------------------------------------------
 
 %plot der Luftfeuchtigkeit
@@ -78,12 +86,14 @@ elseif value == 5
     subplot(2,1,1)
     hold off
     bar(Luftfeuchtigkeit)
-    title('Luftfeuchtigkeit der nächsten 10 Tage')
+    main_title = title('Luftfeuchtigkeit der nächsten 10 Tage in cm'); 
     ylabel('Luftfeuchtigkeit in %')    
     set(gca,'XTick',[1 2 3 4 5 6 7 8 9 10])
     set(gca,'XTickLabel',{weekday(1,1:3),weekday(2,1:3),weekday(3,1:3),...
         weekday(4,1:3),weekday(5,1:3),weekday(6,1:3),weekday(7,1:3),...
         weekday(8,1:3),weekday(9,1:3),weekday(10,1:3)})
+    set(main_title,'Fontweight','bold')
+    set(main_title,'Fontsize',12)
 
 %--------------------------------------------------------------------------
 
@@ -93,13 +103,15 @@ elseif value == 6
     subplot(2,1,1)
     hold off
     bar(Regenwahrscheinlichkeit)
-    title('Regenwahrscheinlichkeit der nächsten 10 Tage')
+    main_title = title('Regenwahrscheinlichkeit der nächsten 10 Tage in %'); 
     ylabel('Regenwahrscheinlichkeit in %')    
     set(gca,'XTick',[1 2 3 4 5 6 7 8 9 10])
     set(gca,'XTickLabel',{weekday(1,1:3),weekday(2,1:3),weekday(3,1:3),...
         weekday(4,1:3),weekday(5,1:3),weekday(6,1:3),weekday(7,1:3),...
         weekday(8,1:3),weekday(9,1:3),weekday(10,1:3)})
-
+    set(main_title,'Fontweight','bold')
+    set(main_title,'Fontsize',12)
+    
 %--------------------------------------------------------------------------
 
 %plot der Windgeschwindigkeit
@@ -107,14 +119,16 @@ elseif value == 7
     figure(figure_nr)
     subplot(2,1,1)
     hold off
-    plot(Windgeschwindigkeit)
-    title('Windgeschwindigkeit der nächsten 10 Tage')
-    ylabel('Windgeschwindigkeit in km/h')
+    plot_wind = plot(Windgeschwindigkeit);
+    set(plot_wind,'LineWidth',2)
+    main_title = title('Windgeschwindigkeit der nächsten 10 Tage in km/h');
     set(gca,'XTick',[1 2 3 4 5 6 7 8 9 10])
     set(gca,'XTickLabel',{weekday(1,1:3),weekday(2,1:3),weekday(3,1:3),...
         weekday(4,1:3),weekday(5,1:3),weekday(6,1:3),weekday(7,1:3),...
         weekday(8,1:3),weekday(9,1:3),weekday(10,1:3)})
-
+    set(main_title,'Fontweight','bold')
+    set(main_title,'Fontsize',12)
+    
 %--------------------------------------------------------------------------
 
 %plot der Schneefallwahrscheinlichkeit
@@ -122,11 +136,13 @@ else
     figure(figure_nr)
     subplot(2,1,1)
     hold off
-    plot(Schneefallwahrscheinlichkeit)
-    title('Neuschnee der nächsten 10 Tage')
+    bar(Schneefallwahrscheinlichkeit)
+    main_title = title('Neuschnee der nächsten 10 Tage in cm');    
     ylabel('Neuschnee in cm')    
     set(gca,'XTick',[1 2 3 4 5 6 7 8 9 10])
     set(gca,'XTickLabel',{weekday(1,1:3),weekday(2,1:3),weekday(3,1:3),...
         weekday(4,1:3),weekday(5,1:3),weekday(6,1:3),weekday(7,1:3),...
         weekday(8,1:3),weekday(9,1:3),weekday(10,1:3)})
+    set(main_title,'Fontweight','bold')
+    set(main_title,'Fontsize',12)
 end

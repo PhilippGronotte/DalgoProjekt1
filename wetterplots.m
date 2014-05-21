@@ -37,7 +37,7 @@ elseif value == 2
     hold off
     plot_tmin = plot(Niedrigst_temp,'b');
     set(plot_tmin,'LineWidth',2)
-    main_title = title('Niedrigste Temperatur der nächsten 10 Tage in °C') 
+    main_title = title('Niedrigste Temperatur der nächsten 10 Tage in °C'); 
     set(gca,'XTick',[1 2 3 4 5 6 7 8 9 10])
     set(gca,'XTickLabel',{weekday(1,1:3),weekday(2,1:3),weekday(3,1:3),...
         weekday(4,1:3),weekday(5,1:3),weekday(6,1:3),weekday(7,1:3),...

@@ -41,14 +41,14 @@ Installation
 
 [https://github.com/PhilippGronotte/DalgoProjekt1.git](https://github.com/PhilippGronotte/DalgoProjekt1.git)
 
-  <p>After sucessfully cloning the repository go to the selected directory and run 'GUI.m' in Matlab.</p>
+  <p>After successfully cloning the repository go to the selected directory and run 'GUI.m' in Matlab.</p>
 
 
   <p>For further information about 'git' feel free to follow this link:</p>
 
   [http://git-scm.com/](http://git-scm.com/)
 
-The program was sucessfully tested with Matlab R2013a Student Version (8.1.0.604) under Windows 8.1 and Windows 7 Starter (Service Pack 1)
+The program was successfully tested with Matlab R2013a Student Version (8.1.0.604) under Windows 8.1 and Windows 7 Starter (Service Pack 1)
 Project
 -------------------------------
 ### Essentials
@@ -87,14 +87,22 @@ After the first execution you will also find a file called:
 
 - weather.xml
 
-in the chosen programm directory.
+in the chosen program directory.
 
-The program updates its weatherdata from www.wunderground.com . A working internet conection is necessary for that reason.
+The program updates its weatherdata from www.wunderground.com . A working internet connection is necessary for that reason.
 
 The program is completely in German language. Further information in English language can be found in 'Usage'.
 
 ### Usage
-In the following the general usage of the GUI ist shortly described. The first picture represents the choice-of-town-window. In it you are able to choose every german Town by its german name. A few towns from different countries will work also. For example 'Dubai' will just work fine. In the first picture the window is shown.
+<p>In the following the general usage of the GUI is shortly described. The first picture represents the choice-of-town-window. In it you are able to choose every german Town by its german name. Make sure that you're replacing the germanic umlauts by the following terms</p>
+
+- ä = ae
+- ü = ue
+- ö = oe
+
+For example München has to be entered this way : Muenchen.
+
+<p>A few towns from different countries will work also. For example 'Dubai' will just work fine but 'NewYork' won't. You will have to try. In the first picture the choosing-window is shown.</p>
 
 ![Choose a town](http://i1295.photobucket.com/albums/b635/Phoenix_Granite/Stadtauswahl_zps207d3c86.jpg)
 

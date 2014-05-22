@@ -25,7 +25,7 @@ elseif strcmp(icon_switch, 'sleet         ') || strcmp(icon_switch, 'chancesleet
    Bild='flat_colorful\png\sleet.png';
 elseif strcmp(icon_switch, 'chancesnow    ')
    Bild='flat_colorful\png\chancesnow.png';
-elseif strcmp(icon_switch, 'chancetstorm  ')
+elseif strcmp(icon_switch, 'chancetstorms ')|| strcmp(icon_switch, 'tstorms       ')
    Bild='flat_colorful\png\chancetstorms.png';
 elseif strcmp(icon_switch, 'cloudy        ')
    Bild='flat_colorful\png\cloudy.png';

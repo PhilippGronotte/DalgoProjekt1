@@ -1,18 +1,13 @@
-function [] = Grafik_einbinden(icon,axes_feld,Tag,figure_nr)
-% function include a grafik
-%------------------------------------------------------------------------ 
-% Author: TS (c) IHA @ Jade Hochschule applied licence see EOF 
-% Version History:
-% Ver. 0.01 initial create (TS) 13-May-2014  Initials (eg. TS)
+%Funktion zum einbinden einer Grafik in die GUI
 
-%------------Your function implementation here----------------------------- 
+function [] = Grafik_einbinden(icon,axes_feld,Tag,figure_nr)
 
 a=size(icon);
 a=a(2);
 icon_switch = char(icon(Tag,1:a));
 icon_switch(length(icon_switch)+1:14) = ' ';
 %--------------------------------------------------------------------------
-% Wählt Bild in abhängigkeit zur temperatur aus
+% Wählt Wettericon über die vorher in der 'getweatherxml.m' ausgelesenen Wetterstrings aus
 if strcmp(icon_switch, 'clear         ')|| strcmp(icon_switch, 'sunny         ')
     Bild='flat_colorful\png\sunny.png';
 elseif strcmp(icon_switch, 'partlycloudy  ') || strcmp(icon_switch, 'partlysunny   ')
@@ -47,6 +42,7 @@ else
 end
 
 %--------------------------------------------------------------------------
+%Hintergrundfarbe des Icons an die Hintergrundfarbe der Figure anpassen
 colorabs=get(figure_nr, 'Color');
 
 axes(axes_feld)
@@ -57,23 +53,3 @@ axis equal;
 axis off;
 
 
-%--------------------Licence ---------------------------------------------
-% Copyright (c) <2014> TS
-% Institute for Hearing Technology and Audiology
-% Jade University of Applied Sciences 
-% Permission is hereby granted, free of charge, to any person obtaining 
-% a copy of this software and associated documentation files 
-% (the "Software"), to deal in the Software without restriction, including 
-% without limitation the rights to use, copy, modify, merge, publish, 
-% distribute, sublicense, and/or sell copies of the Software, and to
-% permit persons to whom the Software is furnished to do so, subject
-% to the following conditions:
-% The above copyright notice and this permission notice shall be included 
-% in all copies or substantial portions of the Software.
-% THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
-% EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES 
-% OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
-% IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY 
-% CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, 
-% TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE 
-% SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

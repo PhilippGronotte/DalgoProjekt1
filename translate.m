@@ -1,6 +1,5 @@
+%Funktion zum Übersetzen der englischen Wetterstrings ins Deutsche
 function [icon_german] = translate(icon,date_actual)
-%UNTITLED Summary of this function goes here
-%   Detailed explanation goes here
 a=size(icon);
 a=a(2);
 icon_german = char(icon(date_actual,1:a));

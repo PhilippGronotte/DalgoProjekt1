@@ -1,16 +1,13 @@
-function [] = wetterplots(handle, event,Hoehst_temp,Niedrigst_temp,Windgeschwindigkeit,Luftfeuchtigkeit,...
+%Funktion zur Aktualisierung der Wetterplots
+function [] = wetterplots(handle, ~,Hoehst_temp,Niedrigst_temp,Windgeschwindigkeit,Luftfeuchtigkeit,...
     Regenwahrscheinlichkeit,Schneefallwahrscheinlichkeit,figure_nr,weekday,rainfall)
-% function is for the GUI.m
 
-%------------Your function implementation here--------------------------- 
-
- 
-% liest denn aktuellen ausgewählte popup aus
+% Liest den aktuelle ausgewählten Popup aus
  value = get(handle, 'value');
 
  %--------------------------------------------------------------------------
 
- %plot der Höchsten und Niedrigsten Temperatur
+ %Plot der Höchsten und Niedrigsten Temperatur
 if value == 1
     figure(figure_nr)
     subplot(2,1,1)
@@ -30,7 +27,7 @@ if value == 1
 
 %--------------------------------------------------------------------------
 
-%plot der Niedriegsen Temperatur
+%Plot der Niedriegsen Temperatur
 elseif value == 2
     figure(figure_nr)
     subplot(2,1,1)
@@ -47,7 +44,7 @@ elseif value == 2
     
 %--------------------------------------------------------------------------
 
-%plot der Höchsten Temperatur
+%Plot der Höchsten Temperatur
 elseif value == 3
     figure(figure_nr)
     subplot(2,1,1)
@@ -64,7 +61,7 @@ elseif value == 3
     
 %--------------------------------------------------------------------------
 
-%plot der Niederschlagsmenge
+%Plot der Niederschlagsmenge
 elseif value == 4
      figure(figure_nr)
      subplot(2,1,1)
@@ -80,7 +77,7 @@ elseif value == 4
     
 %--------------------------------------------------------------------------
 
-%plot der Luftfeuchtigkeit
+%Plot der Luftfeuchtigkeit
 elseif value == 5
     figure(figure_nr)
     subplot(2,1,1)
@@ -97,7 +94,7 @@ elseif value == 5
 
 %--------------------------------------------------------------------------
 
-%plot der Regenwahrscheinlichkeit
+%Plot der Regenwahrscheinlichkeit
 elseif value == 6
     figure(figure_nr)
     subplot(2,1,1)
@@ -114,7 +111,7 @@ elseif value == 6
     
 %--------------------------------------------------------------------------
 
-%plot der Windgeschwindigkeit
+%Plot der Windgeschwindigkeit
 elseif value == 7
     figure(figure_nr)
     subplot(2,1,1)
@@ -131,7 +128,7 @@ elseif value == 7
     
 %--------------------------------------------------------------------------
 
-%plot der Schneefallwahrscheinlichkeit
+%Plot der Schneefallwahrscheinlichkeit
 else
     figure(figure_nr)
     subplot(2,1,1)

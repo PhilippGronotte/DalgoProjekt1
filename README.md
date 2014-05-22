@@ -41,9 +41,10 @@ Installation
 
 [https://github.com/PhilippGronotte/DalgoProjekt1.git](https://github.com/PhilippGronotte/DalgoProjekt1.git)
 
-  <p>After sucessfully cloning the repository go to the selected directory and run 'GUI.m' in Matlab
+  <p>After sucessfully cloning the repository go to the selected directory and run 'GUI.m' in Matlab.</p>
 
-  For further information about 'git' feel free to follow this link:</p>
+
+  <p>For further information about 'git' feel free to follow this link:</p>
 
   [http://git-scm.com/](http://git-scm.com/)
 
@@ -59,6 +60,28 @@ The project includes following files:
 - cell2vec.m
 - wetterplots.m
 - Tagesanzeige.m
+- Grafik-einbinden.m
+- translate.m
+- flat-colorful
+   - png 
+       - chancerain.png
+       - chancesnow.png
+       - chancetstorms.png
+       - cloudy.png
+       - flurries.png
+       - fog.png
+       - hazy.png
+       - mostlycloudy.png
+       - mostlysunny.png
+       - NaN.png
+       - partlycloudy.png
+       - rain.png
+       - sleet.png
+       - snow.png
+       - sunny.png
+       - tstorms.png
+           
+-README.md
 
 After the first execution you will also find a file called:
 
@@ -66,36 +89,42 @@ After the first execution you will also find a file called:
 
 in the chosen programm directory.
 
-The program updates its weather data from www.wunderground.com. A working internet conection is necessary for that reason.
+The program updates its weatherdata from www.wunderground.com . A working internet conection is necessary for that reason.
 
 The program is completely in German language. Further information in English language can be found in 'Usage'.
 
 ### Usage
-In the following the general usage of the GUI ist shortly described. The first picture represents the user interface.
+In the following the general usage of the GUI ist shortly described. The first picture represents the choice-of-town-window. In it you are able to choose every german Town by its german name. A few towns from different countries will work also. For example 'Dubai' will just work fine. In the first picture the window is shown.
 
-![User Interface](http://i1295.photobucket.com/albums/b635/Phoenix_Granite/explanation_zps5128c171.jpg)
+![Choose a town](http://i1295.photobucket.com/albums/b635/Phoenix_Granite/Stadtauswahl_zps207d3c86.jpg)
 
-The first  programpart ist quite selfexplaining. It shows the plot of the actual chosen weather data.
+The first  programpart ist quite selfexplaining. It shows the plot of the actual chosen weather data. The second picture shows the weather plot.
 
-![Plot of weather data](http://i1295.photobucket.com/albums/b635/Phoenix_Granite/explanation5_zpse173f0e7.jpg)
+![Plot of weather data](http://i1295.photobucket.com/albums/b635/Phoenix_Granite/guiplot_zpsee53bc6f.jpg)
 
 The displayed data can be chosen in the dropdown menu below the plot.
 
-![Dropdown menu](http://i1295.photobucket.com/albums/b635/Phoenix_Granite/explanation2_zpsbbb714c3.jpg)
+![Dropdown menu](http://i1295.photobucket.com/albums/b635/Phoenix_Granite/guiplotwahl_zps2f08579c.jpg)
 
 The radiobutton menu allows to choose a day whose weather data is said to be shown in detail.
 
-![Radiobutton group](http://i1295.photobucket.com/albums/b635/Phoenix_Granite/explanation3_zps54e574d6.jpg) 
+![Radiobutton group](http://i1295.photobucket.com/albums/b635/Phoenix_Granite/guitag_zps4ab272a3.jpg) 
 
 The detailed weather data for the chosen day can be found below the dropdown menu in several textboxes.
 
-![Textboxes](http://i1295.photobucket.com/albums/b635/Phoenix_Granite/explanation5_zpse173f0e7.jpg)
+![Textboxes](http://i1295.photobucket.com/albums/b635/Phoenix_Granite/guitageswetter_zps9d9fd461.jpg)
 
 On the right side is a short oversight placed which shows the actual date as well as the maximum and the minimum temperature.
 
+![overview](http://i1295.photobucket.com/albums/b635/Phoenix_Granite/guitagdaten_zps80405d5a.jpg)
+
+In between there is a icon which shows the allday weather forecast.
+
+![icon](http://i1295.photobucket.com/albums/b635/Phoenix_Granite/guiicon_zps69fa6376.jpg)
+
 At long last, a short overview on the features:
 
-- 10 days weather forecast
+- 10 days weather forecast 
 
 - Individual plottable weather data of:
   - Min und max Temp. 
@@ -107,7 +136,7 @@ At long last, a short overview on the features:
   - Windgeschwindigkeit in km/h (windspeed)
   - Neuschneemenge in cm (snowfall in cm)
 
-- Each day with related data single displayable  
+- Each day with related data single displayable and related weather icons. 
 
 Copyright
 ---------------------------------

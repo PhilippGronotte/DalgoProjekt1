@@ -94,13 +94,14 @@ The program updates its weatherdata from www.wunderground.com . A working intern
 The program is completely in German language. Further information in English language can be found in 'Usage'.
 
 ### Usage
-<p>In the following the general usage of the GUI is shortly described. The first picture represents the choice-of-town-window. In it you are able to choose every german Town by its german name. Make sure that you're replacing the germanic umlauts by the following terms</p>
+<p>In the following the general usage of the GUI is shortly described. The first picture represents the choice-of-town-window. In it you are able to choose every german Town by its german name. Make sure that you're replacing the germanic umlauts and the sharp s (ß) by the following terms</p>
 
 - ä = ae
 - ü = ue
 - ö = oe
+- ß = ss
 
-For example München has to be entered this way : Muenchen.
+For example München/Scheeßel has to be entered this way : Muenchen/Scheessel.
 
 <p>A few towns from different countries will work also. For example 'Dubai' will just work fine but 'NewYork' won't. You will have to try. In the first picture the choosing-window is shown.</p>
 
